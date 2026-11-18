@@ -1,0 +1,776 @@
+{
+  "built_at_utc": "2026-11-18T19:06:30.459017+00:00",
+  "runs": [
+    {
+      "language": "en",
+      "method": "vader",
+      "display_name": "VADER",
+      "metrics": {
+        "n": 3000,
+        "correct": 1682,
+        "incorrect": 1318,
+        "accuracy": 0.5606666666666666,
+        "macro_f1": 0.5563726562363547,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 553,
+          "incorrect": 447,
+          "false_negative": 447,
+          "false_positive": 283,
+          "invalid_predictions": 0,
+          "error_rate": 0.447,
+          "precision": 0.6614832535885168,
+          "recall": 0.553,
+          "f1": 0.6023965141612201
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 421,
+          "incorrect": 579,
+          "false_negative": 579,
+          "false_positive": 390,
+          "invalid_predictions": 0,
+          "error_rate": 0.579,
+          "precision": 0.5191122071516646,
+          "recall": 0.421,
+          "f1": 0.4649364991717283
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 708,
+          "incorrect": 292,
+          "false_negative": 292,
+          "false_positive": 645,
+          "invalid_predictions": 0,
+          "error_rate": 0.292,
+          "precision": 0.5232815964523282,
+          "recall": 0.708,
+          "f1": 0.6017849553761156
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 553,
+          "neutral": 172,
+          "positive": 275,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 209,
+          "neutral": 421,
+          "positive": 370,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 74,
+          "neutral": 218,
+          "positive": 708,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+      "predictions_sha256": "89c180e7be12c73acb334b6df90ad88c858601fcf1089e80def6430e624743e6",
+      "predictions_path": "predictions\\en_vader.csv",
+      "result_path": "results\\en_vader",
+      "metadata": {
+        "method": "VADER_original_EN",
+        "language": "en",
+        "package_version": "3.3.2",
+        "thresholds": {
+          "negative_max": -0.05,
+          "positive_min": 0.05
+        },
+        "input_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+        "created_at_utc": "2026-11-18T16:41:06.566533+00:00",
+        "rows": 3000,
+        "inference_seconds": 0.11559631399995851,
+        "note": "English original VADER"
+      }
+    },
+    {
+      "language": "en",
+      "method": "bert",
+      "display_name": "BERT",
+      "metrics": {
+        "n": 3000,
+        "correct": 2070,
+        "incorrect": 930,
+        "accuracy": 0.69,
+        "macro_f1": 0.6842696371815703,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 852,
+          "incorrect": 148,
+          "false_negative": 148,
+          "false_positive": 422,
+          "invalid_predictions": 0,
+          "error_rate": 0.148,
+          "precision": 0.6687598116169545,
+          "recall": 0.852,
+          "f1": 0.7493403693931399
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 503,
+          "incorrect": 497,
+          "false_negative": 497,
+          "false_positive": 322,
+          "invalid_predictions": 0,
+          "error_rate": 0.497,
+          "precision": 0.6096969696969697,
+          "recall": 0.503,
+          "f1": 0.5512328767123288
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 715,
+          "incorrect": 285,
+          "false_negative": 285,
+          "false_positive": 186,
+          "invalid_predictions": 0,
+          "error_rate": 0.285,
+          "precision": 0.7935627081021087,
+          "recall": 0.715,
+          "f1": 0.7522356654392425
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 852,
+          "neutral": 117,
+          "positive": 31,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 342,
+          "neutral": 503,
+          "positive": 155,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 80,
+          "neutral": 205,
+          "positive": 715,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+      "predictions_sha256": "af56134e34a7fb649b091cce382a93c440a46223406ba6680bb60244069ef9b3",
+      "predictions_path": "runs\\en_bert_seed42\\test_predictions.csv",
+      "result_path": "runs\\en_bert_seed42\\evaluation",
+      "metadata": {
+        "method": "BERT_finetuned",
+        "language": "en",
+        "config": {
+          "language": "en",
+          "model": "google-bert/bert-base-uncased",
+          "model_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+          "tokenizer_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+          "seed": 42,
+          "epochs": 3,
+          "batch_size": 16,
+          "gradient_accumulation": 1,
+          "effective_batch_size": 16,
+          "learning_rate": 2e-05,
+          "weight_decay": 0.01,
+          "max_length": 256,
+          "scheduler": "linear_no_warmup",
+          "clip_grad_norm": 1.0,
+          "selection": "validation_macro_f1; earliest epoch breaks ties",
+          "precision": "fp16_autocast",
+          "train_sha256": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d",
+          "validation_sha256": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c",
+          "smoke": false
+        },
+        "selection": {
+          "epoch": 3,
+          "validation_macro_f1": 0.7469209480278609
+        },
+        "inference_seconds": 2.462637900000118,
+        "training": {
+          "completed_at_utc": "2026-11-18T18:40:53.107012+00:00",
+          "training_seconds": 116.54000560000168,
+          "train_truncation": {
+            "n": 11400,
+            "truncated": 0,
+            "truncation_rate": 0.0
+          },
+          "validation_truncation": {
+            "n": 600,
+            "truncated": 0,
+            "truncation_rate": 0.0
+          },
+          "peak_gpu_memory_bytes": 2236714496
+        },
+        "test_truncation": {
+          "n": 3000,
+          "truncated": 0,
+          "truncation_rate": 0.0
+        },
+        "input_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+        "created_at_utc": "2026-11-18T18:40:56.294583+00:00",
+        "environment": {
+          "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+          "executable": "C:\\Users\\tubad\\Desktop\\RAG_school_assistant\\.venv\\Scripts\\python.exe",
+          "platform": "Windows-10-10.0.26300-SP0",
+          "cpu_count": 64,
+          "gpu": "NVIDIA GeForce RTX 3080 Ti, 12288 MiB, 610.88",
+          "packages": {
+            "torch": "2.5.1+cu121",
+            "transformers": "5.6.1",
+            "datasets": "4.8.5",
+            "huggingface-hub": "1.11.0",
+            "numpy": "2.4.4",
+            "scikit-learn": "1.8.0",
+            "vaderSentiment": null,
+            "matplotlib": "3.10.9",
+            "safetensors": "0.7.0"
+          }
+        }
+      }
+    },
+    {
+      "language": "en",
+      "method": "llm",
+      "display_name": "Qwen 2.5 7B",
+      "metrics": {
+        "n": 3000,
+        "correct": 2049,
+        "incorrect": 951,
+        "accuracy": 0.683,
+        "macro_f1": 0.6867016194914696,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 750,
+          "incorrect": 250,
+          "false_negative": 250,
+          "false_positive": 252,
+          "invalid_predictions": 0,
+          "error_rate": 0.25,
+          "precision": 0.7485029940119761,
+          "recall": 0.75,
+          "f1": 0.7492507492507493
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 722,
+          "incorrect": 278,
+          "false_negative": 278,
+          "false_positive": 603,
+          "invalid_predictions": 0,
+          "error_rate": 0.278,
+          "precision": 0.5449056603773584,
+          "recall": 0.722,
+          "f1": 0.6210752688172042
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 577,
+          "incorrect": 423,
+          "false_negative": 423,
+          "false_positive": 96,
+          "invalid_predictions": 0,
+          "error_rate": 0.423,
+          "precision": 0.8573551263001485,
+          "recall": 0.577,
+          "f1": 0.6897788404064554
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 750,
+          "neutral": 227,
+          "positive": 23,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 205,
+          "neutral": 722,
+          "positive": 73,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 47,
+          "neutral": 376,
+          "positive": 577,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+      "predictions_sha256": "fbaa15928cd38512b14a9593a0a980e382c85b1e79f2b656ec74ea438728e666",
+      "predictions_path": "runs\\en_llm_test\\predictions.csv",
+      "result_path": "runs\\en_llm_test\\evaluation",
+      "metadata": {
+        "experiment_hash": "06cbb38c59dab736259c3a15e4c1daa100aadf38e40c7c0a5615843ba4236091",
+        "model_identity": {
+          "model": "qwen2.5:latest",
+          "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+          "size": 4683087332,
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "7.6B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 3584,
+            "runner": "ggml"
+          },
+          "ollama_version": "0.40.15",
+          "template_sha256": "78b33556a364c601b7682ec3deee5536919cd9b1873cc5998a99491c6a2f2ddc",
+          "parameters": null,
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        },
+        "language": "en",
+        "stage": "test",
+        "input_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+        "selected_ids_hash": "48e3ac6aeb38aea4142bbede01518bfb82663a171e4fa30f3910876355445277",
+        "n": 3000,
+        "completed_at_utc": "2026-11-18T18:52:58.770906+00:00",
+        "current_session_wall_seconds": 89.56089070000053,
+        "workers": 2,
+        "summed_request_seconds": 178.91477350009518,
+        "invalid_predictions": 0,
+        "input_tokens": 426738,
+        "output_tokens": 6000,
+        "api_fee_usd": 0,
+        "note": "Wall time with concurrent requests differs from sum of request latencies."
+      }
+    },
+    {
+      "language": "tr",
+      "method": "vader_diagnostic",
+      "display_name": "VADER tanısal",
+      "metrics": {
+        "n": 3000,
+        "correct": 1103,
+        "incorrect": 1897,
+        "accuracy": 0.36766666666666664,
+        "macro_f1": 0.25337248274681995,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 24,
+          "incorrect": 976,
+          "false_negative": 976,
+          "false_positive": 16,
+          "invalid_predictions": 0,
+          "error_rate": 0.976,
+          "precision": 0.6,
+          "recall": 0.024,
+          "f1": 0.04615384615384615
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 956,
+          "incorrect": 44,
+          "false_negative": 44,
+          "false_positive": 1816,
+          "invalid_predictions": 0,
+          "error_rate": 0.044,
+          "precision": 0.3448773448773449,
+          "recall": 0.956,
+          "f1": 0.5068928950159067
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 123,
+          "incorrect": 877,
+          "false_negative": 877,
+          "false_positive": 65,
+          "invalid_predictions": 0,
+          "error_rate": 0.877,
+          "precision": 0.6542553191489362,
+          "recall": 0.123,
+          "f1": 0.20707070707070707
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 24,
+          "neutral": 949,
+          "positive": 27,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 6,
+          "neutral": 956,
+          "positive": 38,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 10,
+          "neutral": 867,
+          "positive": 123,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+      "predictions_sha256": "455a874f60b1f029e437ac26cf656a24b1e93c5789c5314dc29aee926a3e2069",
+      "predictions_path": "predictions\\tr_vader_diagnostic.csv",
+      "result_path": "results\\tr_vader_diagnostic",
+      "metadata": {
+        "method": "VADER_original_TR_diagnostic",
+        "language": "tr",
+        "package_version": "3.3.2",
+        "thresholds": {
+          "negative_max": -0.05,
+          "positive_min": 0.05
+        },
+        "input_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+        "created_at_utc": "2026-11-18T16:41:06.809331+00:00",
+        "rows": 3000,
+        "inference_seconds": 0.06278894799993395,
+        "note": "Direct Turkish use is a diagnostic, not a native Turkish sentiment system"
+      }
+    },
+    {
+      "language": "tr",
+      "method": "bert",
+      "display_name": "BERT",
+      "metrics": {
+        "n": 3000,
+        "correct": 2469,
+        "incorrect": 531,
+        "accuracy": 0.823,
+        "macro_f1": 0.8234184586626832,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 850,
+          "incorrect": 150,
+          "false_negative": 150,
+          "false_positive": 116,
+          "invalid_predictions": 0,
+          "error_rate": 0.15,
+          "precision": 0.8799171842650103,
+          "recall": 0.85,
+          "f1": 0.8646998982706002
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 760,
+          "incorrect": 240,
+          "false_negative": 240,
+          "false_positive": 261,
+          "invalid_predictions": 0,
+          "error_rate": 0.24,
+          "precision": 0.7443682664054848,
+          "recall": 0.76,
+          "f1": 0.7521029193468581
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 859,
+          "incorrect": 141,
+          "false_negative": 141,
+          "false_positive": 154,
+          "invalid_predictions": 0,
+          "error_rate": 0.141,
+          "precision": 0.8479763079960513,
+          "recall": 0.859,
+          "f1": 0.8534525583705911
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 850,
+          "neutral": 134,
+          "positive": 16,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 102,
+          "neutral": 760,
+          "positive": 138,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 14,
+          "neutral": 127,
+          "positive": 859,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+      "predictions_sha256": "bdafed6ee59338a6b528b5e76b27c3a798ab733d7347a7af102bcc71b33c93eb",
+      "predictions_path": "runs\\tr_bert_seed42\\test_predictions.csv",
+      "result_path": "runs\\tr_bert_seed42\\evaluation",
+      "metadata": {
+        "method": "BERT_finetuned",
+        "language": "tr",
+        "config": {
+          "language": "tr",
+          "model": "dbmdz/bert-base-turkish-cased",
+          "model_revision": "b6e1de16c983e0f2c70664591ea3f22810072608",
+          "tokenizer_revision": "b6e1de16c983e0f2c70664591ea3f22810072608",
+          "seed": 42,
+          "epochs": 3,
+          "batch_size": 16,
+          "gradient_accumulation": 1,
+          "effective_batch_size": 16,
+          "learning_rate": 2e-05,
+          "weight_decay": 0.01,
+          "max_length": 256,
+          "scheduler": "linear_no_warmup",
+          "clip_grad_norm": 1.0,
+          "selection": "validation_macro_f1; earliest epoch breaks ties",
+          "precision": "fp16_autocast",
+          "train_sha256": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29",
+          "validation_sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+          "smoke": false
+        },
+        "selection": {
+          "epoch": 3,
+          "validation_macro_f1": 0.8510584134025532
+        },
+        "inference_seconds": 2.7426445000000967,
+        "training": {
+          "completed_at_utc": "2026-11-18T18:44:29.954092+00:00",
+          "training_seconds": 119.62668639999902,
+          "train_truncation": {
+            "n": 11400,
+            "truncated": 2,
+            "truncation_rate": 0.00017543859649122806
+          },
+          "validation_truncation": {
+            "n": 600,
+            "truncated": 0,
+            "truncation_rate": 0.0
+          },
+          "peak_gpu_memory_bytes": 3263501312
+        },
+        "test_truncation": {
+          "n": 3000,
+          "truncated": 2,
+          "truncation_rate": 0.0006666666666666666
+        },
+        "input_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+        "created_at_utc": "2026-11-18T18:44:33.349983+00:00",
+        "environment": {
+          "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+          "executable": "C:\\Users\\tubad\\Desktop\\RAG_school_assistant\\.venv\\Scripts\\python.exe",
+          "platform": "Windows-10-10.0.26300-SP0",
+          "cpu_count": 64,
+          "gpu": "NVIDIA GeForce RTX 3080 Ti, 12288 MiB, 610.88",
+          "packages": {
+            "torch": "2.5.1+cu121",
+            "transformers": "5.6.1",
+            "datasets": "4.8.5",
+            "huggingface-hub": "1.11.0",
+            "numpy": "2.4.4",
+            "scikit-learn": "1.8.0",
+            "vaderSentiment": null,
+            "matplotlib": "3.10.9",
+            "safetensors": "0.7.0"
+          }
+        }
+      }
+    },
+    {
+      "language": "tr",
+      "method": "llm",
+      "display_name": "Qwen 2.5 7B",
+      "metrics": {
+        "n": 3000,
+        "correct": 2210,
+        "incorrect": 790,
+        "accuracy": 0.7366666666666667,
+        "macro_f1": 0.7186620829596628,
+        "invalid_predictions": 0,
+        "label_order": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_rows": "gold",
+        "confusion_columns": "prediction"
+      },
+      "classes": [
+        {
+          "class": "negative",
+          "support": 1000,
+          "correct": 894,
+          "incorrect": 106,
+          "false_negative": 106,
+          "false_positive": 354,
+          "invalid_predictions": 0,
+          "error_rate": 0.106,
+          "precision": 0.7163461538461539,
+          "recall": 0.894,
+          "f1": 0.7953736654804271
+        },
+        {
+          "class": "neutral",
+          "support": 1000,
+          "correct": 431,
+          "incorrect": 569,
+          "false_negative": 569,
+          "false_positive": 153,
+          "invalid_predictions": 0,
+          "error_rate": 0.569,
+          "precision": 0.738013698630137,
+          "recall": 0.431,
+          "f1": 0.5441919191919192
+        },
+        {
+          "class": "positive",
+          "support": 1000,
+          "correct": 885,
+          "incorrect": 115,
+          "false_negative": 115,
+          "false_positive": 283,
+          "invalid_predictions": 0,
+          "error_rate": 0.115,
+          "precision": 0.7577054794520548,
+          "recall": 0.885,
+          "f1": 0.816420664206642
+        }
+      ],
+      "matrix": {
+        "negative": {
+          "negative": 894,
+          "neutral": 73,
+          "positive": 33,
+          "__invalid__": 0
+        },
+        "neutral": {
+          "negative": 319,
+          "neutral": 431,
+          "positive": 250,
+          "__invalid__": 0
+        },
+        "positive": {
+          "negative": 35,
+          "neutral": 80,
+          "positive": 885,
+          "__invalid__": 0
+        }
+      },
+      "gold_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+      "predictions_sha256": "db879acedaeef4c8714f86075d85af59f716575ab79babd3ed7c885e2d1ee209",
+      "predictions_path": "runs\\tr_llm_test\\predictions.csv",
+      "result_path": "runs\\tr_llm_test\\evaluation",
+      "metadata": {
+        "experiment_hash": "06cbb38c59dab736259c3a15e4c1daa100aadf38e40c7c0a5615843ba4236091",
+        "model_identity": {
+          "model": "qwen2.5:latest",
+          "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+          "size": 4683087332,
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "7.6B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 3584,
+            "runner": "ggml"
+          },
+          "ollama_version": "0.40.16",
+          "template_sha256": "78b33556a364c601b7682ec3deee5536919cd9b1873cc5998a99491c6a2f2ddc",
+          "parameters": null,
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        },
+        "language": "tr",
+        "stage": "test",
+        "input_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+        "selected_ids_hash": "dfbdb6e0f086761af130120a1684d9aca5d0965c6b6a22adc88b5ac952f63e5e",
+        "n": 3000,
+        "completed_at_utc": "2026-11-18T19:05:27.248417+00:00",
+        "resumed_from_records": 2318,
+        "runtime_version_record_counts": {
+          "0.40.15": 2318,
+          "0.40.16": 682
+        },
+        "runtime_version_change_explicitly_allowed": true,
+        "current_session_wall_seconds": 41.788845899999956,
+        "workers": 2,
+        "summed_request_seconds": 507.22589689996164,
+        "invalid_predictions": 0,
+        "input_tokens": 447275,
+        "output_tokens": 6001,
+        "api_fee_usd": 0,
+        "note": "Wall time with concurrent requests differs from sum of request latencies."
+      }
+    }
+  ],
+  "unavailable": [],
+  "all_common_test_checks_passed": true,
+  "manual_review_sample_n": 90
+}

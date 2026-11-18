@@ -1,0 +1,61 @@
+{
+  "n": 30,
+  "correct": 23,
+  "incorrect": 7,
+  "accuracy": 0.7666666666666667,
+  "macro_f1": 0.7629072681704261,
+  "invalid_predictions": 0,
+  "label_order": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "confusion_rows": "gold",
+  "confusion_columns": "prediction",
+  "method": "LLM_zero_shot",
+  "language": "tr",
+  "gold_sha256": "03c9d2b352052f5032a56aa82f6147fe20483a19ec4cc384f7eb0b2b666e7d80",
+  "predictions_sha256": "719d433a88db9c95ac00a55c38f3f4d64843ae6bce8778178fc1581c99a27006",
+  "conditions": {
+    "experiment_hash": "06cbb38c59dab736259c3a15e4c1daa100aadf38e40c7c0a5615843ba4236091",
+    "model_identity": {
+      "model": "qwen2.5:latest",
+      "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+      "size": 4683087332,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 3584,
+        "runner": "ggml"
+      },
+      "ollama_version": "0.40.15",
+      "template_sha256": "78b33556a364c601b7682ec3deee5536919cd9b1873cc5998a99491c6a2f2ddc",
+      "parameters": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "language": "tr",
+    "stage": "pilot",
+    "input_sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+    "selected_ids_hash": "452f0c78587179c2d183e8e070e83bce181f7e28b1364bde061568f24f29cf68",
+    "n": 30,
+    "completed_at_utc": "2026-11-18T18:50:38.685732+00:00",
+    "current_session_wall_seconds": 1.1303183999989415,
+    "workers": 2,
+    "summed_request_seconds": 2.21976089999589,
+    "invalid_predictions": 0,
+    "input_tokens": 4537,
+    "output_tokens": 60,
+    "api_fee_usd": 0,
+    "note": "Wall time with concurrent requests differs from sum of request latencies."
+  }
+}

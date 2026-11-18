@@ -1,0 +1,21 @@
+{
+  "language": "tr",
+  "model": "dbmdz/bert-base-turkish-cased",
+  "model_revision": "b6e1de16c983e0f2c70664591ea3f22810072608",
+  "tokenizer_revision": "b6e1de16c983e0f2c70664591ea3f22810072608",
+  "seed": 42,
+  "epochs": 3,
+  "batch_size": 16,
+  "gradient_accumulation": 1,
+  "effective_batch_size": 16,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "max_length": 256,
+  "scheduler": "linear_no_warmup",
+  "clip_grad_norm": 1.0,
+  "selection": "validation_macro_f1; earliest epoch breaks ties",
+  "precision": "fp16_autocast",
+  "train_sha256": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29",
+  "validation_sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+  "smoke": false
+}

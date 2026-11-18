@@ -1,0 +1,10 @@
+# Install CUDA-enabled torch for your platform using pytorch.org first.
+-r requirements.txt
+torch>=2.5,<3
+transformers>=5.6,<6
+safetensors>=0.4
+numpy>=1.26
+matplotlib>=3.8
+sentencepiece>=0.2
+# Word generation is separate; actual run uses the bundled document runtime.
+python-docx>=1.1

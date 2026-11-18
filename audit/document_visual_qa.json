@@ -1,0 +1,27 @@
+{
+  "reviewed_at_utc": "2026-11-18T19:13:59.123168+00:00",
+  "docx_sha256": "3bf3158427862c7e64e3f5cd79ec5826b719220e8f432468575d55041ffac4a3",
+  "renderer": "Microsoft Word native PDF export; bundled pypdfium2 rasterization",
+  "canonical_renderer_limitation": "No bundled LibreOffice on this Windows runtime",
+  "pages": 9,
+  "visually_inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "all_pages_passed": true,
+  "checks": [
+    "No blank pages",
+    "No clipped text or tables",
+    "No overlaps",
+    "All six actual results shown",
+    "No decorative title rule",
+    "Readable figures and Turkish glyphs"
+  ]
+}

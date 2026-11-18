@@ -1,0 +1,31 @@
+﻿id,text,label,source_split
+tr_02a875a548ec2bc2cffb11c95fcec4a3333f49a5f18e025bdf0c72d7f15c1664,Kalıbı çok dar malesef ve çok kısa.,negative,train
+tr_a58f47dd8d373b2f5ef4677a44989c327bc09ad555bae059397fee955ab3b10e,Önceden de kullanıyordum zaten burdada indirim varken kaçırmadım. Özellikle uyumadan önce kullanınca sabaha dudaklarınız yumuşacık uyanıyosunuzz,positive,train
+tr_b7d30b647008ad422bd92332f91dd8d2ba1faec0bb733e1930f58c4852e2ca66,Çok ufaklar. Ama fırçaları güzel,neutral,train
+tr_e986c9dddbf0f14e53e66dac813b4303836dc26c2b3c1e352022a443850790d5,"arkadaşlar ürün muazzam👍 alanın pişman olma gibi bir riski yok,süper....ben almaya devam ederim ve aldırırım da...kokusu benim için kıstas değil işlevi geçerli...piyasada kozmetik dükkanında satılan yağlar ile alakası yok ,bu evrilmiş bir ürün o kadar diyim...Alın.",positive,train
+tr_4a9461ef8087463ccfdaaa1fb114ce07cd47b1fb0b412f8d4a5332a5cd2566fe,Saçımı daha önce bakır rengi kullandım 1 ay önce dönüş yapıp kahveye boyadım . Gayet başarılı Karamel rengi gibi oldu,neutral,train
+tr_94dda09038f907cdcf3a16958e045b57cd7f6c9b3a8f7e9550429f3946def40d,Ürün çok güzel. Göze sürdüğünde kırılma parçalanma yapmıyor yani sürmeden önce baza falan ihtiyaç yok. Keşke yanında sürmek için bir far fırçası olsaydı iyiydi😒,neutral,train
+tr_0b10c97858a928eef534eca4de33688f2c636a917628947eb52b87ea530f27f5,ürün sivilcelerde bir işe yaramadı belki de cilt yapısından kaynaklıdır,neutral,train
+tr_b353296f48990a879606d953028a02c95d5c4933b02eddc04716ea00c2473283,ürünü biraz tereddüt ederek yorumlara bakarak almıştım lakin iyi ki almışım yüzümü Pamuk gibi yumuşacık yaptı daha iki kullanımda üstelik bence bu fiyata kaçırılmayacak ürün sadece ben koyu rengini sipariş vermiştim açık pembe geldi ama sorun değil hepsi sonuçta aynı işlevi görüyor 🙂,positive,train
+tr_efbba16317ad39bedcd52e09cd845ed1203b5ca3ac81e67eac2763c836a7f224,ya çok güzel annem aldı denedim bende alicam fakat morardı benim çok tutmamama rağmen el alışınca ins kalmaz böyle bir sorun,positive,train
+tr_243eb2b940bbbb550ae7111beedf9181d3ac5b174aaa9f6c5aa6262245d42aa9,2014te üretilen sabun geldi inşallah cildimi bozmaz,negative,train
+tr_eec874c8728e43fa7dbb9565744a8bfb356ee193ecf085875a6e57f746223073,düzenli kullanım gerekli,neutral,train
+tr_08d8d313051cd9fa302305f2ce1fc09ebf68a445bbd983996b29023fb916bd05,"bu ürünü bu kadar uyguna aldığıma hala inanamiyorum, kokusu çok güzel umarım saçlarımda da etkili bir sonuç verir",positive,train
+tr_d656fede74f81e15e6dd5e5eb0afec7758776693708a7548de7ce38f11742276,Ürün çok güzel paketlenmişti gönderen firmaya çok tesekkür ederim ilk kez kullandım saçımı yumusacık yaptı,positive,train
+tr_0a113329fe4c08fb2dc145a6be96c39090538a734aa003517a422e51fc0543b9,çok bir işlevini göremedim ama yinede işe yarıyor,neutral,train
+tr_27b3caaf63dc87e75913ccc24eecd12aae3e889b034c607a9cff64c4bf21d445,"Daha önce siyahını almıştım hiç sorun yokken , bu renkte kalıp kalite duruş çok farklı iade ettim . Yani başka yorumlara bakıp bedeninizi , bir küçük büyük beden bile alsanız anlamsız bir şekilde maalesef farklılık gösterebiliyor şansınıza artık",negative,train
+tr_f0e08b9b1e1b4e004eb45ece3b534bd51fc4f206a6cd86a752912f22d71b10e8,Ürün kaliteli gibi görünüyordu fakat ilk yıkamada askılarından dikişleri attı memnun kalmadım,negative,train
+tr_4590f62847f7d5e1f067463eb05c2c73b9c5ac477920f58ebc53846c5288089f,"Saçları yumuşacık yapıyor ve mükemmel bir kokusu var, daha kutuyu açmadan kokusu geldi😁",positive,train
+tr_578a7ddc7326b514c24c15272addb88556afc09d2d3c84025b415ee54c0d0796,S giymeme rağmen yorumlara bakım m aldım buna rağmen kücük geldi,negative,train
+tr_63a232a53cb247b59a29babcc4c05f7873dd67b4ab21d4dbde4872119cc524ea,rengi akiyor tavsiye etmem,negative,train
+tr_39b193842cd0d78314fa0024d806039507552ea4c2fe0b54cfa6108e9190759c,çok uygun fiyat güzel paketleme:),positive,train
+tr_da5928eed1dd61fe2b387d2783d8f32865562ae87baafc58ce7b3db9e2a582f7,kokuları fena değil ama kalıcılığı zayıf,neutral,train
+tr_b07b1790e42ee1b1f58d4b81c2d485018997ac735c43df2f140dbdfbeada3100,Severek kullanıyorum cidden etkili,positive,train
+tr_bbfaf808bc9cb0abccab7c52fc0074d30d9b12fb54d17c6275548a84f1a045f1,Yüzü gerçekten güzelce temizliyor ama benim yüzümde zaten sivilce ve akne tarzı şeyler olmadığı için çok fark yaratmadı ama güzel temizliyor.,positive,train
+tr_5bf0938070c64e46023768d729a22fd23f361afc5f31f43cff9455bd8fbe232c,aylardır kullanıyorum bana mısın demedi hiçbir etkisini görmedim yorumlara güvenip almıştım :(,negative,train
+tr_ca93c51c3cf07d4f70b9b9ec612335a0c2f01d449bcabb3e398398d7654f07a0,asla iyi değil almayın alalı 1 ay oldu bozuldu çalışmıyor,negative,train
+tr_f02261e4bc241f196a33f838de7de6e30b0e4ee1e9dd31dd3c3ac3584e9a3224,"Bir kere yaptım olmadı, ikinciyle uğraşacak değilim..",negative,train
+tr_20b4c7bb2d83ec9227f18397514bc7d19e3f1bb9aba2c99ecba4260886a9e935,"Ürün güzel kapatıcılığı iyi, ama ben rengini tutturamadım. Tüm yüze uygulandığından başka ürünlerle karıştırıp kullanıyorum.",neutral,train
+tr_c1606f3a344670181261d7b74f0273d7fb9c74e2aba6a0c2671f3c7d65da5247,Çok tatmin etmedi açıkçası derin siyah noktaları çekmiyor ve fazla tutunca yüzde morarma yapiyo,neutral,train
+tr_330fc85161768a33c7ccbbef4b47170952de1dcf0bcbaf6280535b7c9e534de9,Ürün kalitesiz.,negative,train
+tr_1ee499b22f023f233634f49f8fae687bd74f39cef7d51c3d31bad0fb7e6e4478,Kokusunu bildiğim çok da beğendiğim bir parfüm. indirim döneminde almamdan mı kaynaklı bilemiyorum kokusu çok hafif esansı az geldi beğenmedim,neutral,train

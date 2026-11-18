@@ -1,0 +1,14 @@
+{
+  "provider": "openai-compatible",
+  "model": "REPLACE_WITH_PROVIDER_MODEL_SNAPSHOT",
+  "model_revision": "REPLACE_WITH_IMMUTABLE_SNAPSHOT_IF_SUPPORTED",
+  "base_url": "https://api.example.com/v1",
+  "api_key_env": "SENTIMENT_LLM_API_KEY",
+  "prompt_file": "prompts/zero_shot_v1.txt",
+  "temperature": 0,
+  "seed": 42,
+  "num_ctx": 4096,
+  "max_output_tokens": 16,
+  "timeout_seconds": 90,
+  "max_attempts": 3
+}

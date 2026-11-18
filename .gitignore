@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+runtime_cache/
+*.pt
+*.safetensors
+.env
+qa/
+*.log
+runs/*smoke*/
+environment-ml-lock.txt
+.env.*
+!.env.example
+/tools/publish_github.py
+/Duygu_Analizi_Teslim_Paketi.zip

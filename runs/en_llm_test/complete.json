@@ -1,0 +1,42 @@
+{
+  "experiment_hash": "06cbb38c59dab736259c3a15e4c1daa100aadf38e40c7c0a5615843ba4236091",
+  "model_identity": {
+    "model": "qwen2.5:latest",
+    "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+    "size": 4683087332,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584,
+      "runner": "ggml"
+    },
+    "ollama_version": "0.40.15",
+    "template_sha256": "78b33556a364c601b7682ec3deee5536919cd9b1873cc5998a99491c6a2f2ddc",
+    "parameters": null,
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "language": "en",
+  "stage": "test",
+  "input_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+  "selected_ids_hash": "48e3ac6aeb38aea4142bbede01518bfb82663a171e4fa30f3910876355445277",
+  "n": 3000,
+  "completed_at_utc": "2026-11-18T18:52:58.770906+00:00",
+  "current_session_wall_seconds": 89.56089070000053,
+  "workers": 2,
+  "summed_request_seconds": 178.91477350009518,
+  "invalid_predictions": 0,
+  "input_tokens": 426738,
+  "output_tokens": 6000,
+  "api_fee_usd": 0,
+  "note": "Wall time with concurrent requests differs from sum of request latencies."
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "path": "runs\\en_bert_seed42\\best\\config.json",
+    "bytes": 1013,
+    "sha256": "ccb4f1ea585b8b5ab20807efb044e51c544c298a855ca8e9177554b1245c9292"
+  },
+  {
+    "path": "runs\\en_bert_seed42\\best\\model.safetensors",
+    "bytes": 437961700,
+    "sha256": "e732adce3ec29669d794b856537ca271a4582f2313ea4ea7a5a4d32c0a74dd95"
+  },
+  {
+    "path": "runs\\en_bert_seed42\\best\\tokenizer.json",
+    "bytes": 711396,
+    "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+  },
+  {
+    "path": "runs\\en_bert_seed42\\best\\tokenizer_config.json",
+    "bytes": 366,
+    "sha256": "71cd48543bec670f50e0c9c3556df16b1f58ea720ead6a1b4675f08870c60b17"
+  },
+  {
+    "path": "runs\\tr_bert_seed42\\best\\config.json",
+    "bytes": 935,
+    "sha256": "dd740690969102a7436b2db835a2fd055d207e503a5e7b901f46eaf3153e5b3c"
+  },
+  {
+    "path": "runs\\tr_bert_seed42\\best\\model.safetensors",
+    "bytes": 442502140,
+    "sha256": "ca725f4e05a079fdeb89ed95255026ae34a4b19ce5210519f72ea17b81d7f985"
+  },
+  {
+    "path": "runs\\tr_bert_seed42\\best\\tokenizer.json",
+    "bytes": 754526,
+    "sha256": "d424e0bceb7f017dfced77157d14647505b28b41bfc8d9bffd5631f1b1fe61e5"
+  },
+  {
+    "path": "runs\\tr_bert_seed42\\best\\tokenizer_config.json",
+    "bytes": 386,
+    "sha256": "d50873edfa649e9950fbfb196da01d0b2b4470a25e2ac711cf5c7022761b0a04"
+  }
+]

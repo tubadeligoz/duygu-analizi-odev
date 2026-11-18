@@ -1,0 +1,18 @@
+{
+  "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "executable": "C:\\Users\\tubad\\Desktop\\RAG_school_assistant\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "cpu_count": 64,
+  "gpu": "NVIDIA GeForce RTX 3080 Ti, 12288 MiB, 610.88",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "5.6.1",
+    "datasets": "4.8.5",
+    "huggingface-hub": "1.11.0",
+    "numpy": "2.4.4",
+    "scikit-learn": "1.8.0",
+    "vaderSentiment": null,
+    "matplotlib": "3.10.9",
+    "safetensors": "0.7.0"
+  }
+}

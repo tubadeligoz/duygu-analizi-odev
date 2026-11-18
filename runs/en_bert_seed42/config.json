@@ -1,0 +1,21 @@
+{
+  "language": "en",
+  "model": "google-bert/bert-base-uncased",
+  "model_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+  "tokenizer_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+  "seed": 42,
+  "epochs": 3,
+  "batch_size": 16,
+  "gradient_accumulation": 1,
+  "effective_batch_size": 16,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "max_length": 256,
+  "scheduler": "linear_no_warmup",
+  "clip_grad_norm": 1.0,
+  "selection": "validation_macro_f1; earliest epoch breaks ties",
+  "precision": "fp16_autocast",
+  "train_sha256": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d",
+  "validation_sha256": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c",
+  "smoke": false
+}

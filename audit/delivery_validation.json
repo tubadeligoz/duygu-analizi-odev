@@ -1,0 +1,64 @@
+{
+  "verified_at_utc": "2026-11-18T19:14:33.265800+00:00",
+  "all_checks_passed": true,
+  "test_runs": 6,
+  "total_test_predictions": 18000,
+  "preserved_original_files": [
+    "01_prepare_data.py",
+    "02_vader.py",
+    "03_evaluate.py",
+    "RAPOR_TASLAGI.md",
+    "common.py",
+    "data\\en\\excluded_label_conflicts.csv",
+    "data\\en\\test.csv",
+    "data\\en\\train.csv",
+    "data\\en\\validation.csv",
+    "data\\manifest.json",
+    "data\\tr\\excluded_label_conflicts.csv",
+    "data\\tr\\test.csv",
+    "data\\tr\\train.csv",
+    "data\\tr\\validation.csv",
+    "predictions\\en_vader.csv",
+    "predictions\\en_vader.metadata.json",
+    "predictions\\tr_vader_diagnostic.csv",
+    "predictions\\tr_vader_diagnostic.metadata.json",
+    "requirements-tested.txt",
+    "requirements.txt",
+    "results\\en_vader\\class_errors.csv",
+    "results\\en_vader\\confusion_matrix.csv",
+    "results\\en_vader\\metrics.json",
+    "results\\en_vader\\misclassified.csv",
+    "results\\tr_vader_diagnostic\\class_errors.csv",
+    "results\\tr_vader_diagnostic\\confusion_matrix.csv",
+    "results\\tr_vader_diagnostic\\metrics.json",
+    "results\\tr_vader_diagnostic\\misclassified.csv",
+    "test_pipeline.py"
+  ],
+  "updated_documentation_with_originals_archived": [
+    "CALISTIRMA_DURUMU.md",
+    "README.md"
+  ],
+  "large_weights_excluded_from_lightweight_package": [],
+  "unchanged_data_sha256": {
+    "en": {
+      "train": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d",
+      "validation": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c",
+      "test": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515"
+    },
+    "tr": {
+      "train": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29",
+      "validation": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+      "test": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32"
+    }
+  },
+  "validated_checks": [
+    "gold/prediction hashes",
+    "exact ID coverage",
+    "invalid denominator",
+    "validation-only checkpoint choice",
+    "same LLM/prompt in two languages",
+    "pilot/test signatures",
+    "journal/prediction identity",
+    "real error case provenance"
+  ]
+}

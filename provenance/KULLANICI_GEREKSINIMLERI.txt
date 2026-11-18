@@ -1,0 +1,98 @@
+İngilizce ve Türkçe metinlerde VADER, BERT ve LLM yöntemlerini karşılaştıran bir üniversite projesi geliştiriyoruz. Teslim tarihi 25 Kasım 2026. Grup tam 3 kişiden oluşuyor.
+
+Amacın, tekrarlanabilir deneyler yürüten, gerçek sonuçları raporlayan ve teslim materyallerini hazırlayan bir proje oluşturmak.
+
+Önce mevcut klasörü incele. Başlangıç paketindeki README, veri hazırlama kodu, değerlendirme kodu, veri manifesti ve mevcut sonuçları oku. Çalışan bileşenleri koru; tamamlanmış işleri gereksiz yere yeniden yapma.
+
+PROJE GEREKSİNİMLERİ
+
+Her iki dilde:
+- Önceden etiketlenmiş negatif, nötr ve pozitif yorumlar kullanılmalı.
+- Kaynak veride her sınıfta en az 1.000 yorum bulunmalı.
+- VADER, BERT ve LLM ayrı ayrı uygulanmalı.
+- Her gerçek duygu sınıfı için yanlış sınıflandırılan yorum sayıları hesaplanmalı.
+- Aynı dilde bütün yöntemler aynı test ID’leri üzerinde değerlendirilmeli.
+
+Mevcut başlangıç paketinde her dil için şu dengeli bölümleme hazırlanmış olabilir:
+- Eğitim: sınıf başına 3.800
+- Doğrulama: sınıf başına 200
+- Test: sınıf başına 1.000
+
+Dosyaları ve manifesti kontrol ederek bunu doğrula. Mevcut bölümler geçerliyse koru. Kaynak sürümleri, sınıf sayıları ve dosya hashlerini kaydet.
+
+VERİ VE DENEY TASARIMI
+
+1. Boş metin, tekrar, çelişkili etiket ve bölümler arası metin sızıntısı kontrollerini yap.
+2. Emoji, olumsuzluk sözcükleri, noktalama ve büyük harf gibi duygu sinyallerini gereksiz yere silme.
+3. Eğitim verisini öğrenme; doğrulama verisini parametre, checkpoint ve prompt seçimi için kullan.
+4. Test sonuçlarına bakarak hiperparametre veya prompt seçme.
+5. İngilizce ve Türkçe kaynakların alanları farklıysa bunu raporda bir sınırlılık olarak açıkla.
+6. Test etiketlerini model girdilerine dahil etme.
+
+YÖNTEMLER
+
+A) VADER
+- İngilizcede orijinal VADER’ı uygula.
+- Standart compound eşiklerini kullan ve sürümü kaydet.
+- Türkçeye doğrudan uygulamayı açıkça “tanısal başlangıç deneyi” olarak adlandır.
+- Türkçe için çeviri + VADER hattını isteğe bağlı ayrı bir deney olarak destekle. Çeviri modelini, çevrilmiş metinleri ve süreyi kaydet.
+- Türkçeye uyarlama biçimini raporda açıkça belirt; doğrudan Türkçe kullanımını yerleşik Türkçe desteği varmış gibi sunma.
+
+B) BERT
+- İngilizce için google-bert/bert-base-uncased, Türkçe için dbmdz/bert-base-turkish-cased başlangıç adaylarıdır. Model kartlarını ve güncel kullanım API’larını doğrula.
+- Üç sınıflı sınıflandırma başlığıyla eğitim verisinde fine-tuning uygula.
+- Başlangıç ayarları: learning_rate=2e-5, batch_size=16, max_length=256, en fazla 3 epoch, seed=42.
+- En iyi checkpoint’i doğrulama Macro-F1 değerine göre seç.
+- GPU belleğine göre batch size ve gradient accumulation ayarlanabilir.
+- Model/tokenizer sürümlerini, parametreleri, donanımı ve süreyi kaydet.
+- Donanım ve zaman uygunsa üç seed ile tekrar deneyini seçenek olarak ekle.
+
+C) LLM
+- İki dilde aynı çok dilli instruction-tuned modeli kullan.
+- Temel deney zero-shot olsun; prompt ve sınıf tanımları iki dilde tutarlı olsun.
+- Yerel model veya API çalıştırıcısını yapılandırılabilir tasarla. Önce mevcut donanımı ve erişimleri kontrol et.
+- Gizli anahtarları ortam değişkenlerinden al; kodlara veya çıktılara yazma.
+- Her yorum için ID, tahmin, ham yanıt, süre ve varsa token kullanımını kaydet.
+- Çıktı yalnızca negative, neutral veya positive kabul etsin.
+- Timeout, tekrar deneme, yanıt doğrulama ve kaldığı yerden devam etme desteği ekle.
+- Başarısız yanıtları sessizce nötr yapma; ayrı bir geçersiz çıktı olarak kaydet ve değerlendirme paydasında tut.
+- Önce doğrulama verisinde küçük pilot yap.
+- Ücretli toplu API çalıştırmasından önce tahmini maliyeti göster ve onay iste.
+
+ORTAK DEĞERLENDİRME
+
+Tahminleri satır sırasıyla değil, benzersiz yorum ID’siyle eşleştir.
+
+Her dil ve yöntem için üret:
+- Sınıf başına toplam, doğru ve yanlış sayısı
+- Sınıf başına hata oranı, precision, recall ve F1
+- Accuracy ve Macro-F1
+- Karışıklık matrisi
+- Yanlış sınıflandırılan yorumların CSV dosyası
+- Geçersiz çıktı sayısı
+- Çalıştırma süresi ve çalışma koşulları
+
+Yanlış(c) = Gerçek etiketi c olan örnek sayısı − doğru tahmin edilen c örnekleri.
+
+Negatif → nötr gibi hata yönlerini de göster. Eksik veya tekrarlanan tahmin ID’lerini denetle.
+
+RAPOR VE TESLİM
+
+Gerçek deney sonuçlarından:
+1. Karşılaştırma tabloları ve okunabilir grafikler üret.
+2. Olumsuzluk, ironi, karışık duygu, nötr sınırı ve olası etiket gürültüsünü örneklerle incele.
+3. Kaynakları, yöntemleri, parametreleri, sonuçları ve sınırlılıkları içeren Türkçe Word raporu oluştur.
+4. Üç grup üyesine konuşma bölümleri ayrılmış, en fazla 10 dakikalık sunum için akış ve konuşma taslağı hazırla.
+5. Kurulum ve çalıştırma komutlarını README’ye yaz.
+6. Teslim edilecek dosyalar için kontrol listesi oluştur.
+
+ÇALIŞMA BİÇİMİ
+
+- Önce mevcut durum ve eksiklere ilişkin kısa bir plan çıkar, ardından uygulamaya geç.
+- Küçük adımlarla ilerle; önemli kararları ve sonuçları anlaşılır Türkçeyle açıkla.
+- Gereksiz arayüz veya web uygulaması geliştirme; çalıştırılabilir Python/Notebook ve deney çıktıları yeterli.
+- Değerlendirme doğruluğu, veri sızıntısı ve çıktı eşleştirmesi için anlamlı kontroller yap.
+- Sonuç, kaynak veya başarı yüzdesi uydurma.
+- Çalıştırılmayan deneyleri ve eksik erişimleri açıkça belirt.
+- Video kaydı, grup bilgileri ve gerçek teslim gibi insan katkısı gerektiren işleri tamamlanmış gösterme.
+- Eksik bir erişim yalnızca ilgili adımı engellesin; bağımsız işleri tamamlamaya devam et.

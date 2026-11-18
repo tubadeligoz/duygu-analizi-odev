@@ -1,0 +1,55 @@
+﻿language,method,gold,prediction,count
+en,VADER,negative,neutral,172
+en,VADER,negative,positive,275
+en,VADER,negative,__invalid__,0
+en,VADER,neutral,negative,209
+en,VADER,neutral,positive,370
+en,VADER,neutral,__invalid__,0
+en,VADER,positive,negative,74
+en,VADER,positive,neutral,218
+en,VADER,positive,__invalid__,0
+en,BERT,negative,neutral,117
+en,BERT,negative,positive,31
+en,BERT,negative,__invalid__,0
+en,BERT,neutral,negative,342
+en,BERT,neutral,positive,155
+en,BERT,neutral,__invalid__,0
+en,BERT,positive,negative,80
+en,BERT,positive,neutral,205
+en,BERT,positive,__invalid__,0
+en,Qwen 2.5 7B,negative,neutral,227
+en,Qwen 2.5 7B,negative,positive,23
+en,Qwen 2.5 7B,negative,__invalid__,0
+en,Qwen 2.5 7B,neutral,negative,205
+en,Qwen 2.5 7B,neutral,positive,73
+en,Qwen 2.5 7B,neutral,__invalid__,0
+en,Qwen 2.5 7B,positive,negative,47
+en,Qwen 2.5 7B,positive,neutral,376
+en,Qwen 2.5 7B,positive,__invalid__,0
+tr,VADER tanısal,negative,neutral,949
+tr,VADER tanısal,negative,positive,27
+tr,VADER tanısal,negative,__invalid__,0
+tr,VADER tanısal,neutral,negative,6
+tr,VADER tanısal,neutral,positive,38
+tr,VADER tanısal,neutral,__invalid__,0
+tr,VADER tanısal,positive,negative,10
+tr,VADER tanısal,positive,neutral,867
+tr,VADER tanısal,positive,__invalid__,0
+tr,BERT,negative,neutral,134
+tr,BERT,negative,positive,16
+tr,BERT,negative,__invalid__,0
+tr,BERT,neutral,negative,102
+tr,BERT,neutral,positive,138
+tr,BERT,neutral,__invalid__,0
+tr,BERT,positive,negative,14
+tr,BERT,positive,neutral,127
+tr,BERT,positive,__invalid__,0
+tr,Qwen 2.5 7B,negative,neutral,73
+tr,Qwen 2.5 7B,negative,positive,33
+tr,Qwen 2.5 7B,negative,__invalid__,0
+tr,Qwen 2.5 7B,neutral,negative,319
+tr,Qwen 2.5 7B,neutral,positive,250
+tr,Qwen 2.5 7B,neutral,__invalid__,0
+tr,Qwen 2.5 7B,positive,negative,35
+tr,Qwen 2.5 7B,positive,neutral,80
+tr,Qwen 2.5 7B,positive,__invalid__,0

@@ -1,0 +1,121 @@
+{
+  "created_at_utc": "2026-11-18T16:39:46.558083+00:00",
+  "seed": 42,
+  "targets_per_class": {
+    "train": 3800,
+    "validation": 200,
+    "test": 1000
+  },
+  "labels": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "python": "3.12.14",
+  "packages": {
+    "datasets": "4.8.5",
+    "huggingface-hub": "1.33.0"
+  },
+  "datasets": {
+    "en": {
+      "repo": "cardiffnlp/tweet_eval",
+      "config": "sentiment",
+      "revision": "b3a375baf0f409c77e6bc7aa35102b7b3534f8be",
+      "raw_class_counts": {
+        "negative": 11377,
+        "neutral": 27479,
+        "positive": 21043
+      },
+      "clean_class_counts": {
+        "negative": 11374,
+        "neutral": 27458,
+        "positive": 21033
+      },
+      "audit": {
+        "empty_rows": 0,
+        "duplicate_rows_removed": 26,
+        "conflicting_rows_removed": 8
+      },
+      "files": {
+        "train": {
+          "rows": 11400,
+          "class_counts": {
+            "negative": 3800,
+            "neutral": 3800,
+            "positive": 3800
+          },
+          "sha256": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d"
+        },
+        "validation": {
+          "rows": 600,
+          "class_counts": {
+            "negative": 200,
+            "neutral": 200,
+            "positive": 200
+          },
+          "sha256": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c"
+        },
+        "test": {
+          "rows": 3000,
+          "class_counts": {
+            "negative": 1000,
+            "neutral": 1000,
+            "positive": 1000
+          },
+          "sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515"
+        }
+      },
+      "original_splits_preserved": true
+    },
+    "tr": {
+      "repo": "maydogan/Turkish_SentimentAnalysis_TRSAv1",
+      "config": null,
+      "revision": "3bda52ed2c57ac1e80ac463192cafeeae9f72213",
+      "raw_class_counts": {
+        "negative": 50000,
+        "neutral": 50000,
+        "positive": 50000
+      },
+      "clean_class_counts": {
+        "negative": 46412,
+        "neutral": 45354,
+        "positive": 48227
+      },
+      "audit": {
+        "empty_rows": 0,
+        "duplicate_rows_removed": 3082,
+        "conflicting_rows_removed": 6925
+      },
+      "files": {
+        "train": {
+          "rows": 11400,
+          "class_counts": {
+            "negative": 3800,
+            "neutral": 3800,
+            "positive": 3800
+          },
+          "sha256": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29"
+        },
+        "validation": {
+          "rows": 600,
+          "class_counts": {
+            "negative": 200,
+            "neutral": 200,
+            "positive": 200
+          },
+          "sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f"
+        },
+        "test": {
+          "rows": 3000,
+          "class_counts": {
+            "negative": 1000,
+            "neutral": 1000,
+            "positive": 1000
+          },
+          "sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32"
+        }
+      },
+      "original_splits_preserved": false
+    }
+  }
+}

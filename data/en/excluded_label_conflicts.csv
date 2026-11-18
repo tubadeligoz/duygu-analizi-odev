@@ -1,0 +1,9 @@
+﻿id,text,label,source_split
+en_6ec5924cc106a23d1b5bfc54a33cc796d98c48589982a9d8b7ed46a23988db76,Buses to replace train services on Sunday as fans flock to the National Bowl to see Foo Fighters | oneMK,positive,train
+en_6ec5924cc106a23d1b5bfc54a33cc796d98c48589982a9d8b7ed46a23988db76,Buses to replace train services on Sunday as fans flock to the National Bowl to see Foo Fighters | oneMK,neutral,train
+en_fe3e8a0147f3de5dfafdc5e8c1cccc13c75a2610acb45fd8457fb79c8b787960,An emotionally intelligent organisation through mindfulness? Find out how with @user in San Fran in Dec pls RT!,neutral,train
+en_fe3e8a0147f3de5dfafdc5e8c1cccc13c75a2610acb45fd8457fb79c8b787960,An emotionally intelligent organisation through mindfulness? Find out how with @user in San Fran in Dec pls RT!,positive,train
+en_8cb54b65e3ee38b9f783cbcf02cc1b03b48955fa9df66a6048f170f7e5514224,Not making it to the main debate stage may not be such a bad thing for Carly Fiorina,neutral,train
+en_8cb54b65e3ee38b9f783cbcf02cc1b03b48955fa9df66a6048f170f7e5514224,Not making it to the main debate stage may not be such a bad thing for Carly Fiorina,negative,train
+en_da18f5c4b54f006727b37c081ee3b9bf0abd18210e72bc6b9df66681c756ec0e,"Kate Upton & Justin Verlander: To Hell with Cy Young, It’s Vatican Time! | TMZ TV",negative,test
+en_da18f5c4b54f006727b37c081ee3b9bf0abd18210e72bc6b9df66681c756ec0e,"Kate Upton & Justin Verlander: To Hell with Cy Young, It’s Vatican Time! | TMZ TV",neutral,test

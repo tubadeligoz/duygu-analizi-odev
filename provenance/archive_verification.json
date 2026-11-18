@@ -1,0 +1,161 @@
+{
+  "archive_path": "C:\\Users\\tubad\\Desktop\\Duygu_Analizi_Odev.zip",
+  "archive_sha256": "83fe42cb255c803f9f3e3a9f7ddede167d3148c56bd650faf1b02caec3250b02",
+  "entries": [
+    {
+      "path": "sentiment_baslangic/01_prepare_data.py",
+      "sha256": "5be7dc430e090ce59be942b05a002a121dbf1362ce54b3ff6912e094abaef698",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/02_vader.py",
+      "sha256": "b4e07303f165980105aa6429a68b28ead3ab1cd3644062d879f75eae03885bc6",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/03_evaluate.py",
+      "sha256": "0462e596e7b96a623c6bb0edda2a61633bc0613af2fa45c638e729e021c9bbb0",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/CALISTIRMA_DURUMU.md",
+      "sha256": "d5c6fb73a0ec2afb45d47ca73d9dfa8e948d5a40f5d224174e5aa1864dbc554b",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/RAPOR_TASLAGI.md",
+      "sha256": "1f3b4e246678a70a68b529afe3fc0beec45d1782eeee1febbb5e25153d335324",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/README.md",
+      "sha256": "e69af58267e68bf31e0c09ccbe5f4c50f89a497be8c0970bcf280b29c1d5676f",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/common.py",
+      "sha256": "7233c17bba100842f265a05203de397b1e30d9195a34f7c9256074185f911493",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/en/excluded_label_conflicts.csv",
+      "sha256": "0d0fee9df51f1a477b332fd536ad00a9c01233ce305a334d59e3c937fb0f3699",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/en/test.csv",
+      "sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/en/train.csv",
+      "sha256": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/en/validation.csv",
+      "sha256": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/manifest.json",
+      "sha256": "01cec2e3714f533ef71f70a944543dbefdb2d62950b6fb692925302c4492ab6e",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/tr/excluded_label_conflicts.csv",
+      "sha256": "f70d78c5e4b8fa8424fb372381b92c26f7a0157e37ec510442446bb6f27fcb3c",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/tr/test.csv",
+      "sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/tr/train.csv",
+      "sha256": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/data/tr/validation.csv",
+      "sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/predictions/en_vader.csv",
+      "sha256": "89c180e7be12c73acb334b6df90ad88c858601fcf1089e80def6430e624743e6",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/predictions/en_vader.metadata.json",
+      "sha256": "2c852599f7de058531899f421f9eb81092416b144196361d0eb0d30ebcebc42c",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/predictions/tr_vader_diagnostic.csv",
+      "sha256": "455a874f60b1f029e437ac26cf656a24b1e93c5789c5314dc29aee926a3e2069",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/predictions/tr_vader_diagnostic.metadata.json",
+      "sha256": "7241874b02ba0ae4b6ca50bca19f7681205d3b06ab1c2fda823bd21ed7b67f5d",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/requirements-tested.txt",
+      "sha256": "3a989ee64dc937ab1f99fc0a41a6c8139bccc5abc086093b767f1d1287711b93",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/requirements.txt",
+      "sha256": "57c96ba488823b766ee93635b85935ba8e74a001c73846fcbb80cdb41d81e084",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/en_vader/class_errors.csv",
+      "sha256": "f7eb6c046791ea451b93256dcce1225cea1a909ad1146be923cd45b5831fa243",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/en_vader/confusion_matrix.csv",
+      "sha256": "b14308ab52b1fffbc8e5cf514fb7df77a759db7f64740492f175ea320b3497e5",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/en_vader/metrics.json",
+      "sha256": "50e01079e2f5de3cf62e47c59fbb73f7dde58f6e38daad08c1d4962258779436",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/en_vader/misclassified.csv",
+      "sha256": "dc19e209e9e29f61acedab98c6f5d2c2181e3805ab6fb821f5fbf9968e49631f",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/tr_vader_diagnostic/class_errors.csv",
+      "sha256": "9edb228610476d95543ac92bbe15c274277c1aeda75366171ca87fdbe4e71a35",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/tr_vader_diagnostic/confusion_matrix.csv",
+      "sha256": "a0e1db53b5c35ad76fea479b53f335d390b71565b18599c893eebce116a6c6a2",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/tr_vader_diagnostic/metrics.json",
+      "sha256": "a7000c822e18d66465661c0e26d252c1de96b20a8830a1cb1092ee739a000e18",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/results/tr_vader_diagnostic/misclassified.csv",
+      "sha256": "0e909de8df7a49d5abc5db4cf0c86a2e1e49deedcc1b25cf7f8f5270ed235004",
+      "matches_existing": true
+    },
+    {
+      "path": "sentiment_baslangic/test_pipeline.py",
+      "sha256": "4f6300a32f9532e0549cdccc214f447d960dea88c28bf0dd70aacea807022638",
+      "matches_existing": true
+    }
+  ]
+}

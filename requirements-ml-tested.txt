@@ -1,0 +1,9 @@
+# Versions actually used for the new BERT runs and result plots, Python 3.11.1 Windows.
+# Install torch first with the CUDA 12.1 index as shown in README.
+torch==2.5.1+cu121
+transformers==5.6.1
+datasets==4.8.5
+huggingface-hub==1.11.0
+numpy==2.4.4
+safetensors==0.7.0
+matplotlib==3.10.9

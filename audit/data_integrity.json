@@ -1,0 +1,121 @@
+{
+  "checked_at_utc": "2026-11-18T18:35:51.078228+00:00",
+  "manifest_sha256": "01cec2e3714f533ef71f70a944543dbefdb2d62950b6fb692925302c4492ab6e",
+  "languages": {
+    "en": {
+      "source": "cardiffnlp/tweet_eval",
+      "revision": "b3a375baf0f409c77e6bc7aa35102b7b3534f8be",
+      "source_class_counts": {
+        "negative": 11377,
+        "neutral": 27479,
+        "positive": 21043
+      },
+      "clean_class_counts": {
+        "negative": 11374,
+        "neutral": 27458,
+        "positive": 21033
+      },
+      "files": {
+        "train": {
+          "rows": 11400,
+          "class_counts": {
+            "negative": 3800,
+            "neutral": 3800,
+            "positive": 3800
+          },
+          "sha256": "8fe780d286bb3a580edb44740b9ecbe5e956952f2817f4e4996b3e148470345d",
+          "second_html_decode_would_change": 8
+        },
+        "validation": {
+          "rows": 600,
+          "class_counts": {
+            "negative": 200,
+            "neutral": 200,
+            "positive": 200
+          },
+          "sha256": "a2608dbc57ffe55d780b699a6f3c73397df755493b798ff1f4dd1d461b91bd7c",
+          "second_html_decode_would_change": 0
+        },
+        "test": {
+          "rows": 3000,
+          "class_counts": {
+            "negative": 1000,
+            "neutral": 1000,
+            "positive": 1000
+          },
+          "sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+          "second_html_decode_would_change": 0
+        }
+      },
+      "overlaps": {
+        "train/validation": 0,
+        "train/test": 0,
+        "validation/test": 0
+      },
+      "excluded_conflict_rows": 8
+    },
+    "tr": {
+      "source": "maydogan/Turkish_SentimentAnalysis_TRSAv1",
+      "revision": "3bda52ed2c57ac1e80ac463192cafeeae9f72213",
+      "source_class_counts": {
+        "negative": 50000,
+        "neutral": 50000,
+        "positive": 50000
+      },
+      "clean_class_counts": {
+        "negative": 46412,
+        "neutral": 45354,
+        "positive": 48227
+      },
+      "files": {
+        "train": {
+          "rows": 11400,
+          "class_counts": {
+            "negative": 3800,
+            "neutral": 3800,
+            "positive": 3800
+          },
+          "sha256": "170137562dc969fe2c10abe8ed945e75b02062dbb0e5d32948a8891b0768cc29",
+          "second_html_decode_would_change": 0
+        },
+        "validation": {
+          "rows": 600,
+          "class_counts": {
+            "negative": 200,
+            "neutral": 200,
+            "positive": 200
+          },
+          "sha256": "d02faa58f0666fea0aff2dfdb8fd41112e6bfea216c07c1ae05c6ef74fc4302f",
+          "second_html_decode_would_change": 0
+        },
+        "test": {
+          "rows": 3000,
+          "class_counts": {
+            "negative": 1000,
+            "neutral": 1000,
+            "positive": 1000
+          },
+          "sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+          "second_html_decode_would_change": 0
+        }
+      },
+      "overlaps": {
+        "train/validation": 0,
+        "train/test": 0,
+        "validation/test": 0
+      },
+      "excluded_conflict_rows": 6925
+    }
+  },
+  "all_checks_passed": true,
+  "cross_language_exact_text_overlap": 0,
+  "limits": [
+    "Near duplicates and user/product leakage cannot be ruled out without identifiers.",
+    "Raw source counts are inherited from the pinned manifest; raw corpus was not redownloaded.",
+    "Eight English training rows contain nested HTML entities. Frozen bytes and IDs are preserved; normalization is not reapplied before inference."
+  ],
+  "preserved_results_verified": [
+    "en_vader",
+    "tr_vader_diagnostic"
+  ]
+}

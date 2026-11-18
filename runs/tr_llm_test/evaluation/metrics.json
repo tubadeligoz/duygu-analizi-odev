@@ -1,0 +1,67 @@
+{
+  "n": 3000,
+  "correct": 2210,
+  "incorrect": 790,
+  "accuracy": 0.7366666666666667,
+  "macro_f1": 0.7186620829596628,
+  "invalid_predictions": 0,
+  "label_order": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "confusion_rows": "gold",
+  "confusion_columns": "prediction",
+  "method": "LLM_zero_shot",
+  "language": "tr",
+  "gold_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+  "predictions_sha256": "db879acedaeef4c8714f86075d85af59f716575ab79babd3ed7c885e2d1ee209",
+  "conditions": {
+    "experiment_hash": "06cbb38c59dab736259c3a15e4c1daa100aadf38e40c7c0a5615843ba4236091",
+    "model_identity": {
+      "model": "qwen2.5:latest",
+      "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+      "size": 4683087332,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 3584,
+        "runner": "ggml"
+      },
+      "ollama_version": "0.40.16",
+      "template_sha256": "78b33556a364c601b7682ec3deee5536919cd9b1873cc5998a99491c6a2f2ddc",
+      "parameters": null,
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "language": "tr",
+    "stage": "test",
+    "input_sha256": "c16974d482ab6c578002928e0a92dec4142fe078a80a560795c22ae5f23efb32",
+    "selected_ids_hash": "dfbdb6e0f086761af130120a1684d9aca5d0965c6b6a22adc88b5ac952f63e5e",
+    "n": 3000,
+    "completed_at_utc": "2026-11-18T19:05:27.248417+00:00",
+    "resumed_from_records": 2318,
+    "runtime_version_record_counts": {
+      "0.40.15": 2318,
+      "0.40.16": 682
+    },
+    "runtime_version_change_explicitly_allowed": true,
+    "current_session_wall_seconds": 41.788845899999956,
+    "workers": 2,
+    "summed_request_seconds": 507.22589689996164,
+    "invalid_predictions": 0,
+    "input_tokens": 447275,
+    "output_tokens": 6001,
+    "api_fee_usd": 0,
+    "note": "Wall time with concurrent requests differs from sum of request latencies."
+  }
+}

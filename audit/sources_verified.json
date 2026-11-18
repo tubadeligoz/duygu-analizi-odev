@@ -1,0 +1,62 @@
+{
+  "access_date": "2026-11-18",
+  "sources": [
+    {
+      "title": "TweetEval dataset card",
+      "url": "https://huggingface.co/datasets/cardiffnlp/tweet_eval"
+    },
+    {
+      "title": "TRSAv1 dataset card",
+      "url": "https://huggingface.co/datasets/maydogan/Turkish_SentimentAnalysis_TRSAv1"
+    },
+    {
+      "title": "TRSAv1 original paper",
+      "url": "https://journals.sagepub.com/doi/10.1177/01655515221074328"
+    },
+    {
+      "title": "TweetEval paper",
+      "url": "https://aclanthology.org/2020.findings-emnlp.148/"
+    },
+    {
+      "title": "BERT paper",
+      "url": "https://aclanthology.org/N19-1423/"
+    },
+    {
+      "title": "English BERT model card",
+      "url": "https://huggingface.co/google-bert/bert-base-uncased"
+    },
+    {
+      "title": "Turkish BERT model card",
+      "url": "https://huggingface.co/dbmdz/bert-base-turkish-cased"
+    },
+    {
+      "title": "Qwen2.5 instruction model card",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
+    },
+    {
+      "title": "Ollama model quantization",
+      "url": "https://ollama.com/library/qwen2.5:latest"
+    },
+    {
+      "title": "VADER original implementation",
+      "url": "https://github.com/cjhutto/vaderSentiment"
+    },
+    {
+      "title": "Transformers classification API",
+      "url": "https://huggingface.co/docs/transformers/en/tasks/sequence_classification"
+    },
+    {
+      "title": "Ollama chat API",
+      "url": "https://docs.ollama.com/api/chat"
+    },
+    {
+      "title": "Optional translation model card",
+      "url": "https://huggingface.co/Helsinki-NLP/opus-mt-tr-en"
+    },
+    {
+      "title": "PyTorch CUDA 12.1 installation for 2.5.1",
+      "url": "https://pytorch.org/get-started/previous-versions/"
+    }
+  ],
+  "verification": "Primary source pages reviewed; model APIs additionally validated by real BERT/Ollama runs."
+}

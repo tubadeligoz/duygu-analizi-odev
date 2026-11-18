@@ -1,0 +1,19 @@
+{
+  "n": 3000,
+  "correct": 1682,
+  "incorrect": 1318,
+  "accuracy": 0.5606666666666666,
+  "macro_f1": 0.5563726562363547,
+  "invalid_predictions": 0,
+  "label_order": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "confusion_rows": "gold",
+  "confusion_columns": "prediction",
+  "method": "vader",
+  "language": "en",
+  "gold_sha256": "07548b8e4b1a8bafbf0e14b907fa72046e8197a1d21d59626f9ece6b892a8515",
+  "predictions_sha256": "89c180e7be12c73acb334b6df90ad88c858601fcf1089e80def6430e624743e6"
+}

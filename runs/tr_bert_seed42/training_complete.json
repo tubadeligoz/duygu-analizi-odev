@@ -1,0 +1,15 @@
+{
+  "completed_at_utc": "2026-11-18T18:44:29.954092+00:00",
+  "training_seconds": 119.62668639999902,
+  "train_truncation": {
+    "n": 11400,
+    "truncated": 2,
+    "truncation_rate": 0.00017543859649122806
+  },
+  "validation_truncation": {
+    "n": 600,
+    "truncated": 0,
+    "truncation_rate": 0.0
+  },
+  "peak_gpu_memory_bytes": 3263501312
+}
