@@ -15,6 +15,8 @@ def fmt(value, places=4):
 
 def main():
     current = (ROOT / "README.md").read_text(encoding="utf-8")
+    group_path = ROOT / "configs/group_members.public.json"
+    group = json.loads(group_path.read_text(encoding="utf-8")) if group_path.exists() else None
     if START in current and END in current:
         guide = current.split(START, 1)[1].split(END, 1)[0].strip()
     else:
@@ -191,7 +193,9 @@ Bu beş örnek, olguları açıklamak amacıyla seçildi; kategori sıklıkları
 | [`audit/`](audit) | Veri, model, test ve belge denetim kayıtları |
 | [`GITHUB_ERISIM.md`](GITHUB_ERISIM.md) | Projeyi GitHub üzerinden indirme |
 
-Teslim tarihi **25 Kasım 2026**; grup tam **üç kişi**. Grup bilgileri, insan hata incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır. Güncel liste: [teslim kontrol listesi](deliverables/TESLIM_KONTROL_LISTESI.md).
+Teslim tarihi **25 Kasım 2026 Çarşamba ders saatidir**; grup tam **üç kişi**. İnsan hata incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır. **İmza karşılığı elden teslim ve e-posta gönderimi birlikte zorunludur.** Eklenti sınırına takılınırsa bütün materyallerin OneDrive bağlantısı e-postaya eklenir. GitHub paylaşımı bu teslimlerin yerine geçmez. Güncel eşleştirme: [ödev uygunluk kontrolü](deliverables/ODEV_UYGUNLUK_KONTROLU.md).
+
+__GROUP__
 
 ## Kurulum ve yeniden üretme
 
@@ -236,6 +240,13 @@ Uygulama API'ları: [Transformers sınıflandırma kılavuzu](https://huggingfac
                         f"**{case['language'].upper()} · {case['method']}** — Kaynak etiket **{label_tr[case['label']]}**, "
                         f"tahmin **{label_tr[case['prediction']]}**.\n\n{case['interpretation']}\n")
     content = intro.replace("__RESULTS__", table).replace("__CASES__", "\n".join(snippets))
+    group_text = ""
+    if group:
+        group_text = "## Grup ve ders\n\n**" + group["course"] + "**\n\nÖğretim elemanı: **" + group["instructor"] + "**\n\n"
+        group_text += "| Grup üyesi | Ad Soyad |\n|---|---|\n"
+        group_text += "\n".join(f"| {i} | {m['name']} |" for i, m in enumerate(group["members"], 1))
+        group_text += "\n\nKapak bilgileri tamamlandı. Öğrenci numaraları GitHub kopyasında gizlidir; tam bilgiler özgün çalışma bilgisayarındaki yerel teslim raporunda bulunur. [Teslim kontrol listesi](deliverables/TESLIM_KONTROL_LISTESI.md).\n"
+    content = content.replace("__GROUP__", group_text)
     content = content.replace("__GUIDE_START__", START).replace("__GUIDE_END__", END).replace("__GUIDE__", guide)
     (ROOT / "README.md").write_text(content, encoding="utf-8")
     print("Built README with 4 real figures, 5 real error cases, 3 short source quotations and linked references")

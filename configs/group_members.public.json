@@ -1,0 +1,10 @@
+{
+  "audience": "public",
+  "course": "BİM 448 Veri Madenciliği ve Bilgi Keşfi",
+  "instructor": "Doç. Dr. Aysun Güran",
+  "members": [
+    {"name": "Tuba Deligöz", "student_number": "GitHub kopyasında gizli"},
+    {"name": "Özge Çelik", "student_number": "GitHub kopyasında gizli"},
+    {"name": "Tuba Rukiye Dan", "student_number": "GitHub kopyasında gizli"}
+  ]
+}

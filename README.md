@@ -203,7 +203,22 @@ Bu beş örnek, olguları açıklamak amacıyla seçildi; kategori sıklıkları
 | [`audit/`](audit) | Veri, model, test ve belge denetim kayıtları |
 | [`GITHUB_ERISIM.md`](GITHUB_ERISIM.md) | Projeyi GitHub üzerinden indirme |
 
-Teslim tarihi **25 Kasım 2026**; grup tam **üç kişi**. Grup bilgileri, insan hata incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır. Güncel liste: [teslim kontrol listesi](deliverables/TESLIM_KONTROL_LISTESI.md).
+Teslim tarihi **25 Kasım 2026 Çarşamba ders saatidir**; grup tam **üç kişi**. İnsan hata incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır. **İmza karşılığı elden teslim ve e-posta gönderimi birlikte zorunludur.** Eklenti sınırına takılınırsa bütün materyallerin OneDrive bağlantısı e-postaya eklenir. GitHub paylaşımı bu teslimlerin yerine geçmez. Güncel eşleştirme: [ödev uygunluk kontrolü](deliverables/ODEV_UYGUNLUK_KONTROLU.md).
+
+## Grup ve ders
+
+**BİM 448 Veri Madenciliği ve Bilgi Keşfi**
+
+Öğretim elemanı: **Doç. Dr. Aysun Güran**
+
+| Grup üyesi | Ad Soyad |
+|---|---|
+| 1 | Tuba Deligöz |
+| 2 | Özge Çelik |
+| 3 | Tuba Rukiye Dan |
+
+Kapak bilgileri tamamlandı. Öğrenci numaraları GitHub kopyasında gizlidir; tam bilgiler özgün çalışma bilgisayarındaki yerel teslim raporunda bulunur. [Teslim kontrol listesi](deliverables/TESLIM_KONTROL_LISTESI.md).
+
 
 ## Kurulum ve yeniden üretme
 

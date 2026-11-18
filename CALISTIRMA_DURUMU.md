@@ -40,7 +40,7 @@ LLM: Qwen2.5 7B Instruct Q4_K_M; prompt hash 06cbb38c59dab736259c3a15e4c1daa100a
 - Üç seed BERT tekrarı: komutlar hazır, çalıştırılmadı.
 - Ücretli API: yapılandırılabilir çalıştırıcı ve maliyet onay kapısı var; gerçek API çağrısı yapılmadı.
 - İki grup üyesinin bağımsız hata kodlaması yapılmadı.
-- Tam üç üyenin adları ve öğrenci numaraları ile ders bilgileri eksik.
+- Üç grup üyesinin adı, öğrenci numaraları, ders ve öğretim elemanı bilgileri yerel teslim raporunda tamamlandı. GitHub kopyasında öğrenci numaraları gizlidir.
 - Konuşma taslağı video değildir; video kaydı yapılmadı.
 - E posta, bulut paylaşımı, elden teslim veya gerçek gönderim yapılmadı.
 

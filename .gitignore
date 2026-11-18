@@ -12,3 +12,5 @@ environment-ml-lock.txt
 !.env.example
 /tools/publish_github.py
 /Duygu_Analizi_Teslim_Paketi.zip
+/configs/group_members.local.json
+/teslim_ozel/

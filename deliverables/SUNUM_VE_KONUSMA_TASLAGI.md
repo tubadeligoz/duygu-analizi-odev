@@ -1,20 +1,20 @@
 # Üç kişilik sunum akışı ve konuşma taslağı
 
-Hedef süre **9 dakika**, üst sınır **10 dakika**. Tam üç konuşmacı; her biri yaklaşık üç dakika. Bu dosya konuşma taslağıdır; video kaydı değildir. İsimler ve öğrenci numaraları grupta doldurulacak. Prova süresine göre örnek sayısını azaltın; sayıları veya sınırlılıkları değiştirmeyin.
+Hedef süre **9 dakika**, üst sınır **10 dakika**. Tam üç konuşmacı; her biri yaklaşık üç dakika. Bu dosya konuşma taslağıdır; video kaydı değildir. Konuşmacı adları aşağıdaki önerilen akışa yerleştirildi; bu bir video kaydı değildir. Prova süresine göre örnek sayısını azaltın; sayıları veya sınırlılıkları değiştirmeyin.
 
 | Zaman | Konuşmacı | Gösterilecek içerik |
 |---|---|---|
-| 00:00–01:00 | Üye 1 | Amaç ve veri kaynakları |
-| 01:00–02:00 | Üye 1 | Dengeli bölümler ve sızıntı kontrolü |
-| 02:00–03:00 | Üye 1 | Deney tasarımı ve metrikler |
-| 03:00–04:00 | Üye 2 | VADER ve Türkçe tanısal kullanım |
-| 04:00–05:00 | Üye 2 | BERT eğitimi ve checkpoint seçimi |
-| 05:00–06:00 | Üye 2 | Karşılaştırma tablosu ve sınıf hataları |
-| 06:00–07:00 | Üye 3 | LLM pilotu ve test koşulları |
-| 07:00–08:00 | Üye 3 | Gerçek hata örnekleri |
-| 08:00–09:00 | Üye 3 | Sınırlılıklar ve kapanış |
+| 00:00–01:00 | Tuba Deligöz | Amaç ve veri kaynakları |
+| 01:00–02:00 | Tuba Deligöz | Dengeli bölümler ve sızıntı kontrolü |
+| 02:00–03:00 | Tuba Deligöz | Deney tasarımı ve metrikler |
+| 03:00–04:00 | Özge Çelik | VADER ve Türkçe tanısal kullanım |
+| 04:00–05:00 | Özge Çelik | BERT eğitimi ve checkpoint seçimi |
+| 05:00–06:00 | Özge Çelik | Karşılaştırma tablosu ve sınıf hataları |
+| 06:00–07:00 | Tuba Rukiye Dan | LLM pilotu ve test koşulları |
+| 07:00–08:00 | Tuba Rukiye Dan | Gerçek hata örnekleri |
+| 08:00–09:00 | Tuba Rukiye Dan | Sınırlılıklar ve kapanış |
 
-## Üye 1 için konuşma taslağı 00:00–03:00
+## Tuba Deligöz için konuşma taslağı 00:00–03:00
 
 Bu çalışmada İngilizce ve Türkçe metinlerde negatif, nötr ve pozitif duygu sınıflandırmasını üç yöntemle karşılaştırdık. VADER bir sözlük ve kural sistemi, BERT etiketli veriyle eğitilen bir dil modeli, Qwen ise temel deneyde örnek gösterilmeden kullanılan büyük dil modelidir. Amacımız yalnızca tek bir başarı yüzdesi bulmak değildi. Hangi gerçek sınıfın başka hangi sınıfa karıştığını da ölçtük.
 
@@ -26,7 +26,7 @@ BERT yalnızca eğitim etiketleriyle öğrendi. Doğrulama verisi checkpoint se�
 
 Accuracy doğru sayısının toplam örneğe oranıdır. Macro F1 ise üç sınıfın F1 değerlerinin ortalamasıdır. Sınıfın yanlış sayısını, gerçek etiketi o sınıf olan bin örnekten doğru bulunanları çıkararak hesapladık. Geçersiz cevap olsaydı paydadan çıkarmayacaktık. Şimdi arkadaşım VADER ve BERT sonuçlarını anlatacak.
 
-## Üye 2 için konuşma taslağı 03:00–06:00
+## Özge Çelik için konuşma taslağı 03:00–06:00
 
 VADER’da orijinal vaderSentiment üç nokta üç nokta iki sürümünü ve standart compound eşiklerini kullandık. Eksi sıfır virgül sıfır beş ve altı negatif, artı sıfır virgül sıfır beş ve üstü pozitif, arası nötrdür. İngilizce testte accuracy yüzde 56,07, Macro F1 0,5564 çıktı. Gerçek negatif sınıfta 447, nötr sınıfta 579, pozitif sınıfta 292 hata var.
 
@@ -38,7 +38,7 @@ BERT tarafında İngilizcede bert base uncased, Türkçede BERTurk cased başlan
 
 İngilizce BERT accuracy yüzde 69, Macro F1 0,6843 verdi. Negatif yanlış sayısı 148’e indi; nötrde 497 hata kaldı. Türkçe BERT accuracy yüzde 82,30, Macro F1 0,8234 verdi; sınıf hataları negatifte 150, nötrde 240 ve pozitifte 141 oldu. Karışıklık matrisleri hangi sınıfın nereye gittiğini gösteriyor. İngilizcede Qwen’in Macro F1 değeri BERT’ten çok az yüksek, accuracy değeri ise biraz düşük. Bu küçük fark için anlamlılık testi yapmadık. Arkadaşım LLM koşumunu ve hata örneklerini açıklayacak.
 
-## Üye 3 için konuşma taslağı 06:00–09:00
+## Tuba Rukiye Dan için konuşma taslağı 06:00–09:00
 
 İki dilde aynı yerel Qwen2.5 yedi milyarlık instruction modelini kullandık. Model test sonuçları görülmeden, bilgisayarda bulunduğu ve on iki gigabayt GPU’ya sığdığı için seçildi. Ağırlık digest’i iki dilde aynıdır. Prompt ve sınıf tanımları da aynıdır. Her dilde validation’dan sınıf başına on, toplam otuz yorumla pilot yaptık; promptu değiştirmeden tam teste geçtik.
 

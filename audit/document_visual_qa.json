@@ -1,9 +1,18 @@
 {
-  "reviewed_at_utc": "2026-11-18T19:13:59.123168+00:00",
-  "docx_sha256": "3bf3158427862c7e64e3f5cd79ec5826b719220e8f432468575d55041ffac4a3",
+  "reviewed_at_utc": "2026-11-18T20:09:05.523242+00:00",
   "renderer": "Microsoft Word native PDF export; bundled pypdfium2 rasterization",
   "canonical_renderer_limitation": "No bundled LibreOffice on this Windows runtime",
-  "pages": 9,
+  "pages": 10,
+  "all_pages_passed": true,
+  "checks": [
+    "All 10 public pages visually inspected",
+    "Both covers visually inspected",
+    "Submission pages 2 to 10 have identical pixel hashes to inspected public pages",
+    "No blank pages, clipped text, overlaps or title rule",
+    "Exactly three named members",
+    "Architecture and validation pilot tables included"
+  ],
+  "docx_sha256": "8425f2bd52815f5bcffbce347a96c622c68f7983b5f6284244ae8b545c21d5b7",
   "visually_inspected_pages": [
     1,
     2,
@@ -13,15 +22,8 @@
     6,
     7,
     8,
-    9
+    9,
+    10
   ],
-  "all_pages_passed": true,
-  "checks": [
-    "No blank pages",
-    "No clipped text or tables",
-    "No overlaps",
-    "All six actual results shown",
-    "No decorative title rule",
-    "Readable figures and Turkish glyphs"
-  ]
+  "student_numbers_publicly_visible": false
 }

@@ -103,7 +103,9 @@ def new_page(doc, title):
     h.paragraph_format.page_break_before = True
 
 
-def build(data, output):
+def build(data, output, group=None, assets=None):
+    assets = Path(assets or output)
+    output.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
     integrity = json.loads((ROOT / "audit/data_integrity.json").read_text(encoding="utf-8"))
     runs = data["runs"]
@@ -124,14 +126,19 @@ def build(data, output):
             style.paragraph_format.space_after = Pt(7)
     doc.core_properties.title = "İngilizce ve Türkçe Metinlerde Duygu Analizi"
     doc.core_properties.subject = "VADER BERT ve Qwen yöntemlerinin tekrarlanabilir karşılaştırması"
-    doc.core_properties.author = ""
+    doc.core_properties.author = "; ".join(m["name"] for m in group["members"]) if group else ""
     paragraph(doc, "İngilizce ve Türkçe Metinlerde Duygu Analizi", "Title")
     paragraph(doc, "VADER BERT ve Qwen yöntemlerinin karşılaştırılması", "Subtitle")
     paragraph(doc, "Deney tarihi 18 Kasım 2026    Teslim tarihi 25 Kasım 2026")
-    table(doc, ["Grup üyesi", "Ad Soyad", "Öğrenci numarası"],
-          [["Üye 1", "Doldurulacak", "Doldurulacak"], ["Üye 2", "Doldurulacak", "Doldurulacak"],
-           ["Üye 3", "Doldurulacak", "Doldurulacak"]], [2.6, 8, 6.6])
-    paragraph(doc, "Ders ve öğretim elemanı bilgileri grup tarafından eklenecektir.")
+    members = [[f"Üye {i+1}", m["name"], m["student_number"]] for i, m in enumerate(group["members"])] if group else [[f"Üye {i+1}", "Doldurulacak", "Doldurulacak"] for i in range(3)]
+    table(doc, ["Grup üyesi", "Ad Soyad", "Öğrenci numarası"], members, [2.6, 8, 6.6])
+    if group:
+        paragraph(doc, "Ders " + group["course"])
+        paragraph(doc, "Öğretim elemanı " + group["instructor"])
+        if group["audience"] == "public":
+            paragraph(doc, "GitHub kopyasında öğrenci numaraları gizlidir. Tam bilgiler yerel teslim sürümünde bulunur.")
+    else:
+        paragraph(doc, "Ders ve öğretim elemanı bilgileri grup tarafından eklenecektir.")
     heading(doc, "Özet")
     best = []
     for lang in ("en", "tr"):
@@ -185,12 +192,37 @@ def build(data, output):
     paragraph(doc, "Temperature 0, seed 42, bağlam 4.096 token, en fazla 16 çıktı tokenı, 90 saniye timeout ve en fazla 3 deneme uygulanır. Yalnızca negative, neutral ve positive kabul edilir. Başarısız yanıtlar __invalid__ olarak saklanır ve paydada kalır. ID, ham yanıt, bütün denemeler, gecikme ve token sayıları günlükte tutulur. Yerel koşumda sağlayıcı API ücreti sıfırdır; enerji ve donanım maliyeti ölçülmemiştir.")
     paragraph(doc, "Yeni BERT ve LLM deneyleri Windows üzerinde 12 GB NVIDIA GeForce RTX 3080 Ti ile yürütülmüştür. BERT ortamı Python 3.11.1, PyTorch 2.5.1 cu121 ve Transformers 5.6.1’dir. Başlangıç VADER sonuçları farklı koşumdan korunmuştur; onun donanımı kaydedilmemiştir. Süreler bir donanım hız yarışı olarak yorumlanmamalıdır.")
 
-    # Remaining report pages are generated below from the same verified objects.
-    add_results_pages(doc, data, index, output)
+    add_architecture_page(doc)
+    # Remaining report pages use the same verified results and shared figure assets.
+    add_results_pages(doc, data, index, assets)
     for root in (doc.styles.element, doc._element):
         for border in root.xpath(".//w:pBdr"):
             border.getparent().remove(border)
     doc.save(output / "Proje_Raporu.docx")
+
+
+def add_architecture_page(doc):
+    new_page(doc, "Model mimarileri ve doğrulama pilotları")
+    paragraph(doc, "BERT model yapıları kaydedilmiş best/config.json dosyalarından alınmıştır. Bu mimari özellikler kullanılan eğitim ayarlarından ayrıdır; örneğin modelin konum kapasitesi 512 olsa da deneyde en fazla 256 token kullanılmıştır [4, 5].")
+    configs = {lang: json.loads((ROOT / "runs" / f"{lang}_bert_seed42" / "best/config.json").read_text()) for lang in ("en", "tr")}
+    rows = []
+    for title, key in (("Encoder katmanı", "num_hidden_layers"), ("Dikkat başlığı", "num_attention_heads"),
+                       ("Gizli boyut", "hidden_size"), ("Ara katman boyutu", "intermediate_size"),
+                       ("Sözlük büyüklüğü", "vocab_size"), ("Konum kapasitesi", "max_position_embeddings")):
+        rows.append([title, configs["en"][key], configs["tr"][key]])
+    rows.append(["Çıktı sınıfı", 3, 3])
+    table(doc, ["Mimari özelliği", "İngilizce BERT", "Türkçe BERTurk"], rows, [7.2, 5, 5])
+    paragraph(doc, "İki model de çift yönlü encoder mimarisine sahiptir. BertForSequenceClassification metin temsilini üç sınıflı sınıflandırma başlığına aktarır. Tek etiketli sınıflandırmada çapraz entropi kaybı kullanılır. Yeni başlıkla birlikte encoder parametreleri de fine tuning sırasında güncellenmiştir.")
+    heading(doc, "Qwen yapısı ve yerel çıkarım", 2)
+    paragraph(doc, "Qwen2.5 7B Instruct, instruction tuning uygulanmış bir decoder Transformer modelidir. Kaynak model kartında 28 katman, 28 sorgu başlığı ve 4 anahtar değer başlığı, RoPE konum temsili ve SwiGLU etkinleştirmesi belirtilir [6]. Bu projede kullanılan yerel ağırlık sürümü Q4_K_M nicemlemesine sahiptir. Modelin tam mimari kapasitesi ile deneyde seçilen 4.096 token bağlam sınırı aynı kavram değildir.")
+    paragraph(doc, "LLM için eğitim bölümünde yeniden öğrenme yapılmadı. Her yorum bağımsız zero shot isteğidir. Aynı prompt ve sınıf tanımları korunmuş, test yorumlarının etiketleri ve kaynak puanları isteklerden çıkarılmıştır.")
+    heading(doc, "Doğrulama pilotunun gerçek ölçümleri", 2)
+    rows = []
+    for lang in ("en", "tr"):
+        m = json.loads((ROOT / "runs" / f"{lang}_llm_pilot" / "evaluation/metrics.json").read_text())
+        rows.append([lang.upper(), m["n"], m["correct"], percent(m["accuracy"]), number(m["macro_f1"]), m["invalid_predictions"]])
+    table(doc, ["Dil", "n", "Doğru", "Accuracy", "Macro F1", "Geçersiz"], rows, [1.5, 2, 2.5, 3.5, 4, 3.7])
+    paragraph(doc, "Her pilotta doğrulama bölümünden sınıf başına 10 metin kullanılmıştır. Pilotlar çıktı sözleşmesini ve koşumu doğrulamak içindir; küçük pilot örneklemi nihai test sonucu olarak sunulmaz. Pilot sonrasında prompt değiştirilmeden sabit testlere geçilmiştir.")
 
 
 def add_results_pages(doc, data, index, output):
@@ -301,16 +333,29 @@ def add_results_pages(doc, data, index, output):
     for run in p.runs:
         run.font.name = "Consolas"
         run.font.size = Pt(8.5)
-    paragraph(doc, "Kullanıcı mesajı yalnızca review alanında metni taşıyan JSON nesnesidir. Tam prompt hashleri pilot ve test koşumlarında karşılaştırılır. Grup adları, bağımsız insan incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır.")
+    paragraph(doc, "Kullanıcı mesajı yalnızca review alanında metni taşıyan JSON nesnesidir. Tam prompt hashleri pilot ve test koşumlarında karşılaştırılır. Bağımsız insan incelemesi, video kaydı ve gerçek teslim grup tarafından tamamlanacaktır. Teslim, 25 Kasım ders saatinde imza karşılığı elden ve e posta yoluyla birlikte yapılmalıdır. Eklenti boyutu aşılırsa bütün materyallerin OneDrive bağlantısı e postaya eklenmelidir.")
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output", default="deliverables")
+    p.add_argument("--data-dir", help="Shared report data and figure directory; defaults to --output")
+    p.add_argument("--group-info", default="configs/group_members.public.json")
     args = p.parse_args()
     output = Path(args.output)
-    data = json.loads((output / "report_data.json").read_text(encoding="utf-8"))
-    build(data, output)
+    assets = Path(args.data_dir) if args.data_dir else output
+    data = json.loads((assets / "report_data.json").read_text(encoding="utf-8"))
+    group_path = Path(args.group_info)
+    group = json.loads(group_path.read_text(encoding="utf-8")) if group_path.exists() else None
+    if group:
+        members = group.get("members", [])
+        if len(members) != 3 or len({m["name"] for m in members}) != 3:
+            p.error("Group must contain exactly three distinct members")
+        if group.get("audience") not in ("public", "submission"):
+            p.error("Group audience must be public or submission")
+        if group["audience"] == "submission" and any(not str(m["student_number"]).isdigit() for m in members):
+            p.error("Submission cover needs the real student numbers")
+    build(data, output, group, assets)
     print("Created", output / "Proje_Raporu.docx")
 
 
