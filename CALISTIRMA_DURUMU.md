@@ -2,6 +2,10 @@
 
 Tarih 18 Kasım 2026. Yalnızca gerçek ölçümler yazılmıştır.
 
+## Akademik rapor güncellemesi
+
+22 Kasım 2026 tarihinde mevcut deneyler korunarak tez düzeninde genişletilmiş Word raporu hazırlandı. Rapor 8 bölüm, 33 atıf yapılan kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem içerir. Türkçe özet, İngilizce abstract, literatür, yöntem, bulgular, hata çözümlemesi, geçerlilik tartışması ve ekler eklendi. Akademik rapor `deliverables/Proje_Raporu_Tez.docx` içindedir; öğrenci numaralarını içeren yerel teslim kopyası `teslim_ozel/Proje_Raporu_Tez.docx` altında tutulur. Kısa rapor ve bütün deney çıktıları korunmuştur. Bu güncellemede yeni model eğitimi veya çıkarımı yapılmadı.
+
 ## Tamamlananlar
 
 - Özgün arşivin 31 dosyayla eşleşmesi ve yedeği.

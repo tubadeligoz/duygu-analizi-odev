@@ -1,6 +1,6 @@
 # Ödev yönergesine uygunluk kontrolü
 
-Kontrol tarihi: 18 Kasım 2026. Dayanak, öğrencinin paylaştığı öğretim elemanı yönergesidir. Son teslim **25 Kasım 2026 Çarşamba ders saatidir**. Bu belge not veya kabul garantisi vermez; tamamlanan işi ve kalan gereksinimleri ayırır.
+Kontrol tarihi: 22 Kasım 2026. Dayanak, öğrencinin paylaştığı öğretim elemanı yönergesidir. Son teslim **25 Kasım 2026 Çarşamba ders saatidir**. Bu belge not veya kabul garantisi vermez; tamamlanan işi ve kalan gereksinimleri ayırır.
 
 ## Sonuç
 
@@ -16,9 +16,9 @@ Projenin veri, deney, değerlendirme ve rapor altyapısı yönergenin teknik çe
 | İki dilde BERT tabanlı duygu analizi | Karşılanıyor | İngilizce BERT ve BERTurk üç sınıflı başlıkla eğitim bölümünde fine tuning gördü |
 | İki dilde LLM tabanlı duygu analizi | Karşılanıyor | Aynı Qwen2.5 7B instruction modeli; zero-shot prompt, validation pilotu ve tam testler |
 | Her yöntem dil ve gerçek sınıf için yanlış sayıları | Karşılanıyor | 6 koşum × 3 sınıf = 18 hata sayısı; comparison.csv ve class_metrics.csv |
-| Kaynakları yöntemleri parametreleri ve karşılaştırmaları içeren Word | Kapak ve mimari ayrıntıları tamamlandı | Yerel teslim raporu tam öğrenci bilgilerini içerir. GitHub raporunda öğrenci numaraları gizlidir |
+| Kaynakları yöntemleri parametreleri ve karşılaştırmaları içeren Word | Tez düzeninde genişletildi | Proje_Raporu_Tez.docx: 43 sayfa, 8 bölüm, 33 kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem. Yerel teslim kopyasında tam öğrenci bilgileri; GitHub kopyasında numaralar gizli |
 | Çalıştırılabilir temiz kodlar | Mevcut koşullarda doğrulandı | .py dosyaları, sabit sürümler, README komutları, 14 yazılım testi ve veri denetimleri |
-| Akademik hata yorumu | Temel inceleme hazır; derinleştirme önerilir | Beş açıklamalı vaka, 90 örneklik inceleme CSV'si. Bağımsız insan incelemesi yapılmış sayılmaz |
+| Akademik hata yorumu | Nicel ve nitel tartışma genişletildi | Sınıf kararları, hata yönleri, beş gerçek vaka ve geçerlilik tehditleri tartışıldı. 90 örneklik liste bağımsız insan kodlaması yapılmış anlamına gelmez |
 | Tam üç kişilik grup | Belgelenmiştir | Tuba Deligöz, Özge Çelik ve Tuba Rukiye Dan. Konuşma taslağında üç üye için önerilen akış var; video henüz kaydedilmedi |
 | Herkesin aktif olduğu en fazla 10 dakika video | Eksik | Dokuz dakikalık konuşma taslağı hazır; bu bir video kaydı değildir |
 | Derste imza karşılığında elden teslim | Yapılmadı | 25 Kasım ders saatinde grup gerçekleştirecek |

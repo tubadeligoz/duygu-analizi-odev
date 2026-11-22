@@ -45,7 +45,33 @@ def main():
 
 [Sonuçlar](#gerçek-deney-sonuçları) · [Sınıf hataları](#sınıflara-göre-hatalar) · [Hata örnekleri](#gerçek-yorumlarla-hata-incelemesi) · [Kurulum](#kurulum-ve-yeniden-üretme) · [Kaynaklar](#kaynaklar)
 
-[Türkçe Word raporu](deliverables/Proje_Raporu.docx) · [3 kişilik sunum taslağı](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md) · [Ham sonuç tablosu](deliverables/comparison.csv) · [Gerçek çalıştırma durumu](CALISTIRMA_DURUMU.md)
+[Tez düzeninde akademik Word raporu](deliverables/Proje_Raporu_Tez.docx) · [Kısa rapor](deliverables/Proje_Raporu.docx) · [3 kişilik sunum taslağı](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md) · [Ham sonuç tablosu](deliverables/comparison.csv)
+
+## Tez düzeninde akademik rapor
+
+Genişletilmiş rapor **8 bölüm, 33 kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem** içerir. Türkçe özet, İngilizce abstract, güncel içindekiler, literatür incelemesi, araştırma soruları, veri ve yöntem ayrıntıları, sınıf bazlı sonuçlar, gerçek hata vakaları, geçerlilik tartışması ve deney kimliklerini içeren ekler birlikte sunulur. Ana anlatı ve özetler yaklaşık **6.300 sözcüktür**.
+
+**Akademik yorum:** İngilizce BERT ve Qwen'in küçük farkı için istatistiksel üstünlük iddia edilmez. Türkçede BERT'in toplam 259 örneklik avantajı, nötr sınıftaki 329 örneklik kazanım ile diğer iki sınıftaki toplam 70 örneklik kaybın bileşimidir. Türkçe VADER tanısal koşum olarak açıklanır. Yeni rapor mevcut deneyleri genişleterek yorumlar; çalıştırılmayan deneyler açıkça belirtilir.
+
+![BERT için üç epoch boyunca eğitim kaybı ve doğrulama Macro F1](deliverables/tez_figures/ogrenme_egrileri.png)
+
+Her dilde model seçimi doğrulama Macro-F1 ile yapıldı; seçilen epoch 3. Grafik üç ölçüm noktasını gösterir, daha uzun eğitimin davranışına ilişkin kanıt sağlamaz. [Sayısal epoch kayıtları](deliverables/tez_tables/epoch_metrics.csv).
+
+![İki dilde bütün yöntemlerin negatif nötr ve pozitif sınıf F1 değerleri](deliverables/tez_figures/sinif_f1.png)
+
+Sınıf F1 değerleri kesinlik ile duyarlılığın dengesini gösterir. Türkçe Qwen negatif ve pozitif sınıflarında daha yüksek duyarlılığa sahip olsa da nötr örneklerden gelen yanlış pozitifler bu sınıfların kesinliğini düşürür. [Bütün tez grafikleri](deliverables/tez_figures) · [Kaynakça kayıtları](thesis_references.py).
+
+GitHub raporunda öğrenci numaraları gizlidir. Tam bilgileri içeren teslim sürümü çalışma bilgisayarındaki `teslim_ozel` klasöründe tutulur ve depoya eklenmez. Teslim ZIP'i GitHub'a yüklenmez.
+
+Raporu korunan sonuçlardan yeniden üretmek için ayrı bir Python ortamında:
+
+```powershell
+python -m pip install -r requirements-report.txt
+python 13_build_thesis_assets.py
+python 14_write_thesis.py
+```
+
+Windows ve Microsoft Word varsa `tools/finalize_thesis_word.ps1` içindekiler alanlarını güncelleyip denetim PDF'i oluşturur. Alternatif olarak belgeyi Word'de açıp tüm alanları güncellemek için **Ctrl+A, F9** kullanılabilir. Bu komutlar eğitim veya yeni LLM çağrısı yapmaz.
 
 ## Gerçek deney sonuçları
 
@@ -189,6 +215,9 @@ Bu beş örnek, olguları açıklamak amacıyla seçildi; kategori sıklıkları
 | [`runs/`](runs) | BERT ve LLM koşum ayarları, tahminler ve değerlendirmeler |
 | [`deliverables/figures/`](deliverables/figures) | README'de gösterilen gerçek grafikler |
 | [`deliverables/Proje_Raporu.docx`](deliverables/Proje_Raporu.docx) | Türkçe Word raporu |
+| [`deliverables/Proje_Raporu_Tez.docx`](deliverables/Proje_Raporu_Tez.docx) | Tez düzeninde genişletilmiş akademik rapor |
+| [`deliverables/tez_figures/`](deliverables/tez_figures) | Korunan deneylerden türetilen yedi tez grafiği |
+| [`14_write_thesis.py`](14_write_thesis.py) | Akademik rapor oluşturucu; metin ve kaynaklar ayrı Python dosyalarında |
 | [`deliverables/SUNUM_VE_KONUSMA_TASLAGI.md`](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md) | Üç kişi için dokuz dakikalık akış ve konuşma metni |
 | [`audit/`](audit) | Veri, model, test ve belge denetim kayıtları |
 | [`GITHUB_ERISIM.md`](GITHUB_ERISIM.md) | Projeyi GitHub üzerinden indirme |
@@ -249,7 +278,7 @@ Uygulama API'ları: [Transformers sınıflandırma kılavuzu](https://huggingfac
     content = content.replace("__GROUP__", group_text)
     content = content.replace("__GUIDE_START__", START).replace("__GUIDE_END__", END).replace("__GUIDE__", guide)
     (ROOT / "README.md").write_text(content, encoding="utf-8")
-    print("Built README with 4 real figures, 5 real error cases, 3 short source quotations and linked references")
+    print("Built README with 6 real figures, thesis report, 5 real error cases and linked references")
 
 
 if __name__ == "__main__":

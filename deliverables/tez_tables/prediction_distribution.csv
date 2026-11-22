@@ -1,0 +1,19 @@
+﻿language,method,predicted_class,count,proportion
+en,VADER,negative,836,0.2786666666666667
+en,BERT,negative,1274,0.4246666666666667
+en,Qwen 2.5 7B,negative,1002,0.334
+tr,VADER tanısal,negative,40,0.013333333333333334
+tr,BERT,negative,966,0.322
+tr,Qwen 2.5 7B,negative,1248,0.416
+en,VADER,neutral,811,0.2703333333333333
+en,BERT,neutral,825,0.275
+en,Qwen 2.5 7B,neutral,1325,0.44166666666666665
+tr,VADER tanısal,neutral,2772,0.924
+tr,BERT,neutral,1021,0.3403333333333333
+tr,Qwen 2.5 7B,neutral,584,0.19466666666666665
+en,VADER,positive,1353,0.451
+en,BERT,positive,901,0.30033333333333334
+en,Qwen 2.5 7B,positive,673,0.22433333333333333
+tr,VADER tanısal,positive,188,0.06266666666666666
+tr,BERT,positive,1013,0.33766666666666667
+tr,Qwen 2.5 7B,positive,1168,0.3893333333333333
