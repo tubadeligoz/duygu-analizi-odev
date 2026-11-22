@@ -1,0 +1,5 @@
+﻿hypothesis,language,first,second,metric,n,effect_first_minus_second,test,p_raw,first_only_correct,second_only_correct,permutations,permutation_extreme_count,p_holm,reject_null_at_0_05
+H1,en,bert,vader,accuracy,3000,0.1293333333333333,exact_two_sided_mcnemar,8.197301734891621e-35,701,313,,,2.459190520467486e-34,True
+H2,tr,bert,llm,accuracy,3000,0.08633333333333326,exact_two_sided_mcnemar,8.565252088257181e-24,467,208,,,1.7130504176514362e-23,True
+H3,en,llm,bert,macro_f1,3000,0.002431982309899494,paired_approximate_randomization,0.8089,447,468,19999,16177,0.8089,False
+H4,tr,bert,llm,neutral_recall,1000,0.329,exact_two_sided_mcnemar,8.51712678212274e-68,369,40,,,3.406850712849096e-67,True

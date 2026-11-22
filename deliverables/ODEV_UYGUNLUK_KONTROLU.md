@@ -16,7 +16,7 @@ Projenin veri, deney, değerlendirme ve rapor altyapısı yönergenin teknik çe
 | İki dilde BERT tabanlı duygu analizi | Karşılanıyor | İngilizce BERT ve BERTurk üç sınıflı başlıkla eğitim bölümünde fine tuning gördü |
 | İki dilde LLM tabanlı duygu analizi | Karşılanıyor | Aynı Qwen2.5 7B instruction modeli; zero-shot prompt, validation pilotu ve tam testler |
 | Her yöntem dil ve gerçek sınıf için yanlış sayıları | Karşılanıyor | 6 koşum × 3 sınıf = 18 hata sayısı; comparison.csv ve class_metrics.csv |
-| Kaynakları yöntemleri parametreleri ve karşılaştırmaları içeren Word | Tez düzeninde genişletildi | Proje_Raporu_Tez.docx: 43 sayfa, 8 bölüm, 33 kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem. Yerel teslim kopyasında tam öğrenci bilgileri; GitHub kopyasında numaralar gizli |
+| Kaynakları yöntemleri parametreleri ve karşılaştırmaları içeren Word | Hipotezli iki sütunlu akademik sürüm hazır | Proje_Raporu_Hipotezli_Iki_Sutun.docx: 8 bölüm, 4 hipotez, 36 kaynak, 10 tablo, 7 grafik ve 6 denklem. Tam öğrenci bilgileri yerel teslim kopyasında; GitHub kopyasında numaralar gizli |
 | Çalıştırılabilir temiz kodlar | Mevcut koşullarda doğrulandı | .py dosyaları, sabit sürümler, README komutları, 14 yazılım testi ve veri denetimleri |
 | Akademik hata yorumu | Nicel ve nitel tartışma genişletildi | Sınıf kararları, hata yönleri, beş gerçek vaka ve geçerlilik tehditleri tartışıldı. 90 örneklik liste bağımsız insan kodlaması yapılmış anlamına gelmez |
 | Tam üç kişilik grup | Belgelenmiştir | Tuba Deligöz, Özge Çelik ve Tuba Rukiye Dan. Konuşma taslağında üç üye için önerilen akış var; video henüz kaydedilmedi |

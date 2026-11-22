@@ -4,6 +4,8 @@ Tarih 18 Kasım 2026. Yalnızca gerçek ölçümler yazılmıştır.
 
 ## Akademik rapor güncellemesi
 
+Güncel sürüm `deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx` dosyasıdır. Ana anlatı iki sütunlu olarak düzenlendi; dört açık hipotez, sıfır ve alternatif hipotezler, eşleştirilmiş istatistiksel protokol ve sonuç tablosu eklendi. 36 kaynak, 10 tablo, 7 grafik ve 6 denklem içerir. Hipotezler sonradan kurulduğu için analiz keşifsel olarak belirtilmiştir. Üç tam McNemar sınaması ve 19.999 permütasyonlu Macro-F1 randomizasyon testi, dört test için Holm düzeltmesiyle tamamlandı. H1, H2 ve H4 sıfır hipotezleri reddedildi; H3 için p = 0,8089 ile ret kararı verilmedi. `deliverables/hypothesis_tests.json` bütün sayısal kanıtları içerir. Yeni model eğitimi veya LLM çağrısı yapılmadı. Öğrenci numaralı teslim kopyası aynı adla `teslim_ozel` klasöründedir.
+
 22 Kasım 2026 tarihinde mevcut deneyler korunarak tez düzeninde genişletilmiş Word raporu hazırlandı. Rapor 8 bölüm, 33 atıf yapılan kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem içerir. Türkçe özet, İngilizce abstract, literatür, yöntem, bulgular, hata çözümlemesi, geçerlilik tartışması ve ekler eklendi. Akademik rapor `deliverables/Proje_Raporu_Tez.docx` içindedir; öğrenci numaralarını içeren yerel teslim kopyası `teslim_ozel/Proje_Raporu_Tez.docx` altında tutulur. Kısa rapor ve bütün deney çıktıları korunmuştur. Bu güncellemede yeni model eğitimi veya çıkarımı yapılmadı.
 
 ## Tamamlananlar

@@ -82,6 +82,15 @@ REFERENCES = [
      "Veri kaynağı; sabit revizyon 3bda52ed2c57ac1e80ac463192cafeeae9f72213", "", "https://huggingface.co/datasets/maydogan/Turkish_SentimentAnalysis_TRSAv1/tree/3bda52ed2c57ac1e80ac463192cafeeae9f72213"),
     ("ollamadocs", "Ollama", 2026, "Chat API reference",
      "Teknik belge; üretim isteği, mesajlar ve seçenekler", "", "https://docs.ollama.com/api/chat"),
+    ("mcnemar1947", "Q. McNemar", 1947,
+     "Note on the Sampling Error of the Difference Between Correlated Proportions or Percentages",
+     "Psychometrika, 12(2), ss. 153–157", "10.1007/BF02295996", "https://doi.org/10.1007/BF02295996"),
+    ("holm1979", "S. Holm", 1979, "A Simple Sequentially Rejective Multiple Test Procedure",
+     "Scandinavian Journal of Statistics, 6(2), ss. 65–70", "", "https://www.jstor.org/stable/4615733"),
+    ("randomization2005", "S. Riezler ve J. T. Maxwell", 2005,
+     "On Some Pitfalls in Automatic Evaluation and Significance Testing for MT",
+     "ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine Translation and/or Summarization, ss. 57–64",
+     "", "https://aclanthology.org/W05-0908/"),
 ]
 
 INDEX = {item[0]: i + 1 for i, item in enumerate(REFERENCES)}
@@ -94,5 +103,5 @@ def cite(*keys):
 def formatted(item):
     key, authors, year, title, venue, doi, url = item
     # For mutable web/model cards 2026 is the access year, not a claimed release year.
-    date = "Erişim 22 Kasım 2026" if INDEX[key] >= 28 else str(year)
+    date = "Erişim 22 Kasım 2026" if 28 <= INDEX[key] <= 33 else str(year)
     return f"[{INDEX[key]}] {authors}. {date}. {title}. {venue}." + (f" DOI: {doi}." if doi else "")

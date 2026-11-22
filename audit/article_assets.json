@@ -1,0 +1,16 @@
+{
+  "built_at_utc": "2026-11-22T18:13:51.711116+00:00",
+  "experiments_added": 0,
+  "runs": 6,
+  "reference_predictions": {
+    "predictions\\en_vader.csv": "89c180e7be12c73acb334b6df90ad88c858601fcf1089e80def6430e624743e6",
+    "runs\\en_bert_seed42\\test_predictions.csv": "af56134e34a7fb649b091cce382a93c440a46223406ba6680bb60244069ef9b3",
+    "runs\\en_llm_test\\predictions.csv": "fbaa15928cd38512b14a9593a0a980e382c85b1e79f2b656ec74ea438728e666",
+    "predictions\\tr_vader_diagnostic.csv": "455a874f60b1f029e437ac26cf656a24b1e93c5789c5314dc29aee926a3e2069",
+    "runs\\tr_bert_seed42\\test_predictions.csv": "bdafed6ee59338a6b528b5e76b27c3a798ab733d7347a7af102bcc71b33c93eb",
+    "runs\\tr_llm_test\\predictions.csv": "db879acedaeef4c8714f86075d85af59f716575ab79babd3ed7c885e2d1ee209"
+  },
+  "figure_count": 7,
+  "derivation": "Recomputed class counts and metrics from frozen, ID-matched predictions",
+  "layout": "article_single_column_figures"
+}

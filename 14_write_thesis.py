@@ -19,11 +19,12 @@ from docx.shared import Cm, Pt, RGBColor
 
 from common import LABELS, read_csv
 from experiment_utils import ROOT, load_script, sha256, utc_now
-from thesis_content import ABSTRACT_EN, ABSTRACT_TR, CHAPTERS
+from thesis_content import ABSTRACT_EN, ABSTRACT_TR, CHAPTERS, with_hypotheses
 from thesis_references import REFERENCES, INDEX, formatted
 
 LANG = {"en": "EN", "tr": "TR"}
 LABEL = dict(zip(LABELS, ["Negatif", "Nötr", "Pozitif"]))
+ARTICLE = True
 
 
 def num(value, n=4):
@@ -147,11 +148,25 @@ def set_page_numbers(section, fmt, start=1):
         r.font.size = Pt(10)
 
 
+def columns(section, count, continue_numbering=False):
+    cols = section._sectPr.find(qn("w:cols"))
+    if cols is None:
+        cols = OxmlElement("w:cols")
+        section._sectPr.append(cols)
+    cols.set(qn("w:num"), str(count))
+    cols.set(qn("w:space"), str(int(Cm(.8).twips)))
+    cols.set(qn("w:equalWidth"), "1")
+    if continue_numbering:
+        pg = section._sectPr.find(qn("w:pgNumType"))
+        if pg is not None:
+            pg.attrib.pop(qn("w:start"), None)
+
+
 def setup(doc):
     section = doc.sections[0]
     section.page_width, section.page_height = Cm(21), Cm(29.7)
-    section.left_margin, section.right_margin = Cm(3), Cm(2.5)
-    section.top_margin, section.bottom_margin = Cm(2.5), Cm(2.5)
+    section.left_margin, section.right_margin = (Cm(2), Cm(2)) if ARTICLE else (Cm(3), Cm(2.5))
+    section.top_margin, section.bottom_margin = (Cm(2), Cm(2)) if ARTICLE else (Cm(2.5), Cm(2.5))
     section.header_distance, section.footer_distance = Cm(1.2), Cm(1.2)
     for name in ["Normal", "Title", "Subtitle", "Heading 1", "Heading 2", "Heading 3", "Caption"]:
         s = doc.styles[name]
@@ -160,29 +175,32 @@ def setup(doc):
         s.font.size = Pt(12)
         s.paragraph_format.first_line_indent = Cm(0)
     normal = doc.styles["Normal"]
-    normal.paragraph_format.line_spacing = 1.5
-    normal.paragraph_format.space_after = Pt(6)
-    normal.paragraph_format.first_line_indent = Cm(1.0)
+    normal.font.size = Pt(10.5 if ARTICLE else 12)
+    normal.paragraph_format.line_spacing = 1.12 if ARTICLE else 1.5
+    normal.paragraph_format.space_after = Pt(5 if ARTICLE else 6)
+    normal.paragraph_format.first_line_indent = Cm(.4 if ARTICLE else 1.0)
     normal.paragraph_format.widow_control = True
     normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    for name, size in [("Heading 1", 14), ("Heading 2", 12), ("Heading 3", 12)]:
+    for name, size in [("Heading 1", 13 if ARTICLE else 14), ("Heading 2", 10.5 if ARTICLE else 12), ("Heading 3", 10.5 if ARTICLE else 12)]:
         s = doc.styles[name]
         s.font.size = Pt(size)
         s.font.bold = True
-        s.paragraph_format.space_before = Pt(14)
-        s.paragraph_format.space_after = Pt(8)
+        s.paragraph_format.space_before = Pt(9 if ARTICLE else 14)
+        s.paragraph_format.space_after = Pt(5 if ARTICLE else 8)
         s.paragraph_format.line_spacing = 1.15
         s.paragraph_format.keep_with_next = True
         s.paragraph_format.keep_together = True
+        s.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         if name == "Heading 1":
-            s.paragraph_format.page_break_before = True
+            s.paragraph_format.page_break_before = not ARTICLE
     doc.styles["Title"].font.size = Pt(20)
     doc.styles["Title"].font.bold = True
     doc.styles["Title"].paragraph_format.line_spacing = 1.25
     doc.styles["Subtitle"].font.size = Pt(14)
-    for name, size in [("Front Heading", 14), ("Figure Caption", 10.5),
-                       ("Table Caption", 10.5), ("Reference", 10.5), ("Source Note", 10),
-                       ("Case Quote", 11), ("Code Block", 9)]:
+    for name, size in [("Front Heading", 14), ("Figure Caption", 9 if ARTICLE else 10.5),
+                       ("Table Caption", 9 if ARTICLE else 10.5), ("Reference", 10 if ARTICLE else 10.5), ("Source Note", 9 if ARTICLE else 10),
+                       ("Case Quote", 10 if ARTICLE else 11), ("Code Block", 8 if ARTICLE else 9),
+                       ("Equation", 10.5 if ARTICLE else 12)]:
         s = doc.styles.add_style(name, 1)
         s.base_style = doc.styles["Normal"]
         s.font.name = "Times New Roman"
@@ -205,9 +223,9 @@ def setup(doc):
             s.paragraph_format.space_after = Pt(4)
         if name == "Case Quote":
             s.font.italic = True
-            s.paragraph_format.left_indent = Cm(.6)
-            s.paragraph_format.right_indent = Cm(.3)
-            s.paragraph_format.line_spacing = 1.25
+            s.paragraph_format.left_indent = Cm(.25 if ARTICLE else .6)
+            s.paragraph_format.right_indent = Cm(.15 if ARTICLE else .3)
+            s.paragraph_format.line_spacing = 1.1 if ARTICLE else 1.25
         if name == "Code Block":
             s.font.name = "Consolas"
             s.paragraph_format.line_spacing = 1
@@ -246,6 +264,16 @@ def setup(doc):
 
 
 def table(doc, title, headers, rows, widths, font=10):
+    if ARTICLE and title.startswith("Tablo"):
+        compact = {
+            1: [0.7, 2.1, 2.65, 2.65], 2: [2.3, 1.45, 1.45, 1.45, 1.45],
+            3: [2.6, 5.5], 4: [2.6, 5.5], 5: [.8, 2.0, 1.1, 1.1, 1.6, 1.5],
+            6: [.8, 2.0, 1.35, 1.25, 1.35, 1.35], 7: [2.1, 1.5, 1.5, 1.5, 1.5],
+            8: [2.1, 1.5, 1.5, 1.5, 1.5], 9: [1.6, 4.1, 2.4],
+            10: [.9, 2.0, 1.6, 1.8, 1.8],
+        }
+        widths = compact[int(title.split()[1])]
+        font = 8.5
     para(doc, title, "Table Caption", keep=True)
     t = doc.add_table(rows=1, cols=len(headers))
     t.autofit = False
@@ -277,6 +305,8 @@ def table(doc, title, headers, rows, widths, font=10):
             pr.append(border)
             margins = OxmlElement("w:tcMar")
             for side, val in [("top", 85), ("bottom", 85), ("left", 85), ("right", 85)]:
+                if ARTICLE and title.startswith("Tablo") and side in {"left", "right"}:
+                    val = 55
                 e = OxmlElement("w:"+side)
                 e.set(qn("w:w"), str(val))
                 e.set(qn("w:type"), "dxa")
@@ -298,7 +328,7 @@ def table(doc, title, headers, rows, widths, font=10):
     return t
 
 
-def tables(runs, manifest):
+def tables(runs, manifest, statistics):
     rows = []
     for lang in ["en", "tr"]:
         m = manifest["datasets"][lang]
@@ -342,7 +372,7 @@ def tables(runs, manifest):
                    [1, 4.5, 2.5, 2.5, 2.5, 2.5])
     for i, lang in enumerate(["en", "tr"]):
         d["class_"+lang] = (f"Tablo {7+i} {'İngilizce' if lang == 'en' else 'Türkçe'} sınıf metrikleri",
-                            ["Yöntem", "Sınıf", "Kesinlik", "Duyarlılık", "F1"],
+                            ["Yöntem", "Sınıf", "P", "R", "F1"],
                             [[r["display_name"], LABEL[v["class"]], num(v["precision"]), num(v["recall"]), num(v["f1"])]
                              for r in runs if r["language"] == lang for v in r["classes"]],
                             [4.5, 2.6, 2.8, 2.8, 2.8])
@@ -353,6 +383,18 @@ def tables(runs, manifest):
                      ["EN Qwen", "Test duvarı / istek gecikmeleri toplamı", "89,56 / 178,91"],
                      ["TR Qwen", "Son oturum duvarı / tüm istek gecikmeleri", "41,79 / 507,23"],
                      ["TR Qwen", "Tam koşum duvar süresi", "Kaydedilemedi"]], [3.2, 8.1, 4.2])
+    descriptions = {"H1": "EN BERT–VADER\nDoğruluk", "H2": "TR BERT–Qwen\nDoğruluk",
+                    "H3": "EN Qwen–BERT\nMacro-F1", "H4": "TR BERT–Qwen\nNötr duyarlılık"}
+    def small_p(p):
+        return (f"{p:.2e}" if p < .001 else f"{p:.4f}").replace(".", ",")
+    result_rows = []
+    for row in statistics["results"]:
+        delta = row["effect_first_minus_second"]
+        size = f"{delta:+.4f}" if row["metric"] == "macro_f1" else f"{delta*100:+.2f} yp"
+        result_rows.append([row["hypothesis"], descriptions[row["hypothesis"]], size.replace(".", ","),
+                            small_p(row["p_holm"]), "H0 reddi" if row["reject_null_at_0_05"] else "Ret yok"])
+    d["hypotheses"] = ("Tablo 10 Keşifsel hipotez sınamaları",
+                       ["H", "Karşılaştırma", "Fark", "p Holm", "Karar"], result_rows, [1, 4.7, 3, 3.1, 3.7])
     return d
 
 
@@ -375,7 +417,8 @@ def figure(doc, key):
     p.paragraph_format.line_spacing = 1
     p.paragraph_format.space_before = Pt(7)
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    shape = p.add_run().add_picture(str(ROOT / "deliverables/tez_figures" / filename), width=Cm(width))
+    folder = "deliverables/article_figures" if ARTICLE else "deliverables/tez_figures"
+    shape = p.add_run().add_picture(str(ROOT / folder / filename), width=Cm(8.1 if ARTICLE else width))
     shape._inline.docPr.set("descr", caption + "; projenin sabit tahminlerinden üretilmiştir")
     cp = para(doc, caption, "Figure Caption")
     cp.paragraph_format.keep_with_next = True
@@ -459,16 +502,27 @@ def math_nodes(key):
 
 
 def equation(doc, key):
-    p = para(doc)
+    p = para(doc, style="Equation")
     p.paragraph_format.first_line_indent = Cm(0)
     p.paragraph_format.line_spacing = 1.2
     p.paragraph_format.space_before = Pt(8)
     p.paragraph_format.space_after = Pt(10)
     p.paragraph_format.keep_together = True
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    om = OxmlElement("m:oMath")
-    om.extend(math_nodes(key))
-    p._p.append(om)
+    chunks = [math_nodes(key)]
+    if ARTICLE and key == "aggregate":
+        nodes = math_nodes(key)
+        chunks = [nodes[:2], nodes[2:]]
+    elif ARTICLE and key == "loss":
+        chunks = [[sub("p", "i"), mr(" = softmax(W"), sub("h", "i"), mr(" + b)")],
+                  [mr("L = −"), fraction([mr("1")], [sub("N", "train")]), sub("Σ", "i"),
+                   mr(" log "), sub("p", "i"), mr("("), sub("y", "i"), mr(")")]]
+    for i, chunk in enumerate(chunks):
+        if i:
+            p.add_run().add_break()
+        om = OxmlElement("m:oMath")
+        om.extend(chunk)
+        p._p.append(om)
     p.add_run("     (" + str(EQUATIONS.index(key)+1) + ")")
 
 
@@ -484,7 +538,7 @@ def cover(doc, group):
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.line_spacing = 1.3
     p.paragraph_format.space_after = Pt(30)
-    p = para(doc, "Tez düzeninde ders araştırma raporu")
+    p = para(doc, "İki sütunlu akademik araştırma raporu" if ARTICLE else "Tez düzeninde ders araştırma raporu")
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.first_line_indent = Cm(0)
     p.paragraph_format.space_after = Pt(26)
@@ -589,14 +643,21 @@ def appendix(doc, manifest):
     para(doc, "Çeviri artı VADER, çok tohumlu BERT, istem ablasyonları ve bağımsız insan kodlaması henüz uygulanmamıştır. Sunum taslağı video kaydının yerini tutmaz; video ve teslim adımları ayrıca tamamlanmalıdır.")
 
 
-def build(output, group_path):
+def build(output, group_path, layout="article"):
+    global ARTICLE
+    ARTICLE = layout == "article"
     group = json.loads(group_path.read_text(encoding="utf-8"))
     runs, unavailable = load_script("07_build_results.py").collect()
     if unavailable or len(runs) != 6:
         raise ValueError("Incomplete source results")
     manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
     cases = read_csv(ROOT / "deliverables/error_case_studies.csv")
-    data_tables = tables(runs, manifest)
+    statistics = json.loads((ROOT / "deliverables/hypothesis_tests.json").read_text(encoding="utf-8"))
+    expected = {r["predictions_path"]: r["predictions_sha256"] for r in runs}
+    if statistics["source_prediction_sha256"] != expected:
+        raise ValueError("Hypothesis analysis and report use different predictions")
+    chapters = with_hypotheses(statistics)
+    data_tables = tables(runs, manifest, statistics)
     doc = Document()
     setup(doc)
     number_id = numbering(doc)
@@ -608,14 +669,21 @@ def build(output, group_path):
     front_matter(doc)
     section = doc.add_section(WD_SECTION_START.NEW_PAGE)
     set_page_numbers(section, "decimal")
+    columns(section, 2 if ARTICLE else 1)
     used_refs = Counter()
-    for chapter_i, (title, blocks) in enumerate(CHAPTERS):
+    for chapter_i, (title, blocks) in enumerate(chapters):
         p = heading(doc, title, 1, number_id)
         if chapter_i == 0:
             p.paragraph_format.page_break_before = False
         for kind, value in blocks:
             if kind == "p":
-                para(doc, value)
+                lead, _, rest = value.partition(" ")
+                if lead in {"H1", "H2", "H3", "H4"}:
+                    p = para(doc)
+                    p.add_run(lead + " ").bold = True
+                    p.add_run(rest)
+                else:
+                    para(doc, value)
                 for group_str in re.findall(r"\[([\d, ]+)\]", value):
                     used_refs.update(int(v.strip()) for v in group_str.split(","))
             elif kind == "h2":
@@ -623,6 +691,8 @@ def build(output, group_path):
             elif kind == "table":
                 title, headers, rows, widths = data_tables[value]
                 table(doc, title, headers, rows, widths)
+                if value == "hypotheses":
+                    para(doc, "yp: yüzde puanı. H3 ham Macro-F1 farkıdır. Kararlar Holm düzeltmesi ve α = 0,05 ile verilmiştir.", "Source Note")
             elif kind == "figure":
                 figure(doc, value)
             elif kind == "equation":
@@ -632,11 +702,16 @@ def build(output, group_path):
                 p = para(doc, f"Vaka {value+1} {case['category']}", "Heading 3")
                 para(doc, f"{case['language'].upper()} · {case['method']} · Kaynak {LABEL[case['label']]} · Tahmin {LABEL[case['prediction']]}", "Source Note", keep=True)
                 para(doc, case["text"], "Case Quote")
-                p = para(doc, "Kayıt kimliği " + case["id"], "Code Block")
+                case_id = case["id"]
+                record = "Kayıt kimliği\n" + "\n".join(case_id[i:i+32] for i in range(0, len(case_id), 32)) if ARTICLE else "Kayıt kimliği " + case_id
+                p = para(doc, record, "Code Block")
                 p.paragraph_format.keep_together = True
     if set(used_refs) != set(range(1, len(REFERENCES)+1)):
         raise ValueError(f"Uncited/missing bibliography references: {set(range(1,len(REFERENCES)+1))-set(used_refs)}")
-    front_title(doc, "Kaynakça")
+    if ARTICLE:
+        section = doc.add_section(WD_SECTION_START.NEW_PAGE)
+        columns(section, 1, continue_numbering=True)
+    front_title(doc, "Kaynakça", page=not ARTICLE)
     para(doc, "Metin içinde numaralı atıf sistemi kullanılmıştır. Çevrim içi model ve veri kartlarında 2026, erişim yılını belirtir; modelin yayımlanma yılı olarak yorumlanmamalıdır. Teknik kaynaklara erişim tarihi 22 Kasım 2026’dır.", "Source Note")
     for item in REFERENCES:
         p = para(doc, formatted(item), "Reference")
@@ -649,24 +724,25 @@ def build(output, group_path):
             border.getparent().remove(border)
     output.parent.mkdir(parents=True, exist_ok=True)
     doc.save(output)
-    prose = " ".join([*ABSTRACT_TR, *ABSTRACT_EN, *[v for _, blocks in CHAPTERS for k, v in blocks if k == "p"]])
+    prose = " ".join([*ABSTRACT_TR, *ABSTRACT_EN, *[v for _, blocks in chapters for k, v in blocks if k == "p"]])
     stats = {"built_at_utc": utc_now(), "audience": group["audience"], "output": str(output.relative_to(ROOT)),
-             "sha256_before_field_update": sha256(output), "chapters": len(CHAPTERS),
+             "sha256_before_field_update": sha256(output), "chapters": len(chapters), "layout": layout,
              "academic_and_technical_references": len(REFERENCES), "cited_reference_count": len(used_refs),
              "main_narrative_words_including_abstracts": len(prose.split()),
              "numbered_tables": len(data_tables), "figures": len(FIGURES), "equations": len(EQUATIONS),
-             "experiments_added": 0, "source_predictions": {r["predictions_path"]: r["predictions_sha256"] for r in runs}}
-    dest = ROOT / "audit" / ("thesis_build_public.json" if group["audience"] == "public" else "thesis_build_submission.local.json")
+             "experiments_added": 0, "exploratory_paired_tests": 4, "source_predictions": {r["predictions_path"]: r["predictions_sha256"] for r in runs}}
+    dest = ROOT / "audit" / ("article_build_public.json" if ARTICLE else "thesis_build_public.json")
     # The private build log contains no student IDs, but stays with private artifacts.
     if group["audience"] != "public":
-        dest = output.parent / "thesis_build.json"
+        dest = output.parent / ("article_build.json" if ARTICLE else "thesis_build.json")
     dest.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({k: v for k, v in stats.items() if k != "source_predictions"}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", default="deliverables/Proje_Raporu_Tez.docx")
+    parser.add_argument("--output", default="deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx")
     parser.add_argument("--group-info", default="configs/group_members.public.json")
+    parser.add_argument("--layout", choices=["article", "thesis"], default="article")
     args = parser.parse_args()
-    build(ROOT / args.output, ROOT / args.group_info)
+    build(ROOT / args.output, ROOT / args.group_info, args.layout)

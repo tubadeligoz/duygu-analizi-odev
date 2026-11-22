@@ -8,13 +8,24 @@
 
 [Sonuçlar](#gerçek-deney-sonuçları) · [Sınıf hataları](#sınıflara-göre-hatalar) · [Hata örnekleri](#gerçek-yorumlarla-hata-incelemesi) · [Kurulum](#kurulum-ve-yeniden-üretme) · [Kaynaklar](#kaynaklar)
 
-[Tez düzeninde akademik Word raporu](deliverables/Proje_Raporu_Tez.docx) · [Kısa rapor](deliverables/Proje_Raporu.docx) · [3 kişilik sunum taslağı](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md) · [Ham sonuç tablosu](deliverables/comparison.csv)
+[Hipotezli iki sütunlu Word raporu](deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx) · [Önceki tek sütunlu rapor](deliverables/Proje_Raporu_Tez.docx) · [Kısa rapor](deliverables/Proje_Raporu.docx) · [3 kişilik sunum taslağı](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md)
 
-## Tez düzeninde akademik rapor
+## Hipotezli iki sütunlu akademik rapor
 
-Genişletilmiş rapor **8 bölüm, 33 kaynak, 9 sayısal tablo, 7 grafik ve 6 denklem** içerir. Türkçe özet, İngilizce abstract, güncel içindekiler, literatür incelemesi, araştırma soruları, veri ve yöntem ayrıntıları, sınıf bazlı sonuçlar, gerçek hata vakaları, geçerlilik tartışması ve deney kimliklerini içeren ekler birlikte sunulur. Ana anlatı ve özetler yaklaşık **6.300 sözcüktür**.
+Güncel rapor **8 bölüm, 4 hipotez, 36 kaynak, 10 tablo, 7 grafik ve 6 denklem** içerir. Ana metin iki sütunludur; kapak, özetler, dizinler, kaynakça ve ekler tam sayfa genişliğindedir. Türkçe özet, İngilizce abstract, güncel içindekiler, literatür incelemesi, araştırma soruları, yöntem ayrıntıları, sınıf bazlı bulgular ve hata vakaları birlikte sunulur. Ana anlatı ve özetler yaklaşık **7.000 sözcüktür**.
 
-**Akademik yorum:** İngilizce BERT ve Qwen'in küçük farkı için istatistiksel üstünlük iddia edilmez. Türkçede BERT'in toplam 259 örneklik avantajı, nötr sınıftaki 329 örneklik kazanım ile diğer iki sınıftaki toplam 70 örneklik kaybın bileşimidir. Türkçe VADER tanısal koşum olarak açıklanır. Yeni rapor mevcut deneyleri genişleterek yorumlar; çalıştırılmayan deneyler açıkça belirtilir.
+Hipotezler ilk deney sonuçları görüldükten sonra oluşturulduğu için analiz **keşifseldir**. Aynı test kimlikleri eşleştirilerek üç tam McNemar sınaması ve bir Macro-F1 randomizasyon sınaması uygulandı. Dört p değeri tek ailede Holm yöntemiyle düzeltildi.
+
+| Hipotez | Karşılaştırma | Gözlenen fark | Düzeltilmiş p | Sonuç |
+|---|---|---:|---:|---|
+| H1 | EN BERT − VADER doğruluk | +12,93 yüzde puanı | 2,46×10⁻³⁴ | H0 reddedildi |
+| H2 | TR BERT − Qwen doğruluk | +8,63 yüzde puanı | 1,71×10⁻²³ | H0 reddedildi |
+| H3 | EN Qwen − BERT Macro-F1 | +0,002432 | 0,8089 | H0 reddedilemedi |
+| H4 | TR BERT − Qwen nötr duyarlılık | +32,90 yüzde puanı | 3,41×10⁻⁶⁷ | H0 reddedildi |
+
+H3 için 19.999 eşleştirilmiş permütasyon ve seed 42 kullanıldı. H0'ın reddedilememesi model eşdeğerliğinin kanıtı değildir. Sonuçlar sabit modeller ve bu test örneklemiyle koşulludur; çok tohumlu eğitim tekrarı veya güven aralığı hesaplanmadı. [Tam sınama kaydı](deliverables/hypothesis_tests.json) · [Sayısal tablo](deliverables/hypothesis_tests.csv).
+
+**Akademik yorum:** İngilizce BERT ve Qwen'in küçük Macro-F1 farkı istatistiksel sınamada desteklenmedi. Türkçede BERT'in toplam 259 örneklik avantajı, nötr sınıftaki 329 örneklik kazanım ile diğer iki sınıftaki toplam 70 örneklik kaybın bileşimidir. Türkçe VADER tanısal koşum olarak açıklanır. Çalıştırılmayan deneyler raporda açıkça belirtilir.
 
 ![BERT için üç epoch boyunca eğitim kaybı ve doğrulama Macro F1](deliverables/tez_figures/ogrenme_egrileri.png)
 
@@ -31,6 +42,8 @@ Raporu korunan sonuçlardan yeniden üretmek için ayrı bir Python ortamında:
 ```powershell
 python -m pip install -r requirements-report.txt
 python 13_build_thesis_assets.py
+python 13_build_thesis_assets.py --article
+python 15_test_hypotheses.py
 python 14_write_thesis.py
 ```
 
@@ -56,7 +69,7 @@ Her satır **3.000 test yorumu**, her gerçek sınıf **1.000 yorum** içerir. A
 
 **Grafik nasıl okunur?** Her iki ölçekte de yüksek değer daha iyidir. Accuracy tüm testte doğru tahmin oranını, Macro-F1 üç sınıfın F1 ortalamasını gösterir. Grafiklerde gösterilmeyen ya da çalıştırılmamış deneyler sıfır puanmış gibi eklenmemiştir.
 
-**İngilizce bulgu:** BERT accuracy bakımından %69,00 ile önde; Qwen Macro-F1 bakımından 0,6867 ile çok az yüksek. İki yöntemin Macro-F1 farkı yaklaşık **0,0024**; istatistiksel anlamlılık testi yapılmadı. Tek bir metrik üzerinden kesin model üstünlüğü çıkarılmamalı.
+**İngilizce bulgu:** BERT accuracy bakımından %69,00 ile önde; Qwen Macro-F1 bakımından 0,6867 ile çok az yüksek. Macro-F1 farkı yaklaşık **0,0024**; keşifsel eşleştirilmiş randomizasyon sınamasında düzeltilmiş **p = 0,8089**. Bu fark desteklenmedi. İngilizce accuracy farkı bu dört testlik ailede ayrıca sınanmadı.
 
 **Türkçe bulgu:** BERT hem accuracy hem Macro-F1 bakımından en yüksek genel sonucu verdi. Qwen negatif ve pozitif sınıflarında daha az hata yaparken nötr sınıfta 569 hata yaptı. Dolayısıyla sınıf davranışlarını ayrıca incelemek gerekiyor.
 
@@ -226,6 +239,8 @@ Bu beş örnek, olguları açıklamak amacıyla seçildi; kategori sıklıkları
 | [`deliverables/figures/`](deliverables/figures) | README'de gösterilen gerçek grafikler |
 | [`deliverables/Proje_Raporu.docx`](deliverables/Proje_Raporu.docx) | Türkçe Word raporu |
 | [`deliverables/Proje_Raporu_Tez.docx`](deliverables/Proje_Raporu_Tez.docx) | Tez düzeninde genişletilmiş akademik rapor |
+| [`deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx`](deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx) | Güncel hipotezli iki sütunlu rapor |
+| [`deliverables/hypothesis_tests.json`](deliverables/hypothesis_tests.json) | Dört eşleştirilmiş hipotez sınaması ve Holm düzeltmesi |
 | [`deliverables/tez_figures/`](deliverables/tez_figures) | Korunan deneylerden türetilen yedi tez grafiği |
 | [`14_write_thesis.py`](14_write_thesis.py) | Akademik rapor oluşturucu; metin ve kaynaklar ayrı Python dosyalarında |
 | [`deliverables/SUNUM_VE_KONUSMA_TASLAGI.md`](deliverables/SUNUM_VE_KONUSMA_TASLAGI.md) | Üç kişi için dokuz dakikalık akış ve konuşma metni |

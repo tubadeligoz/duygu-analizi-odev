@@ -1,3 +1,4 @@
 # Tested report-only dependencies. No model download or inference is required.
 python-docx==1.2.0
 matplotlib==3.10.9
+numpy==2.4.4

@@ -37,11 +37,13 @@ def inspect(path):
           "m": "http://schemas.openxmlformats.org/officeDocument/2006/math"}
     text = " ".join(root.xpath("//w:t/text()", namespaces=ns))
     refs = [p.text for p in doc.paragraphs if p.style.name == "Reference"]
-    require(len(refs) == len(REFERENCES) == 33, "Reference count mismatch")
-    require([int(re.match(r"\[(\d+)\]", p)[1]) for p in refs] == list(range(1, 34)), "Bibliography numbering mismatch")
-    require(len(root.xpath("//m:oMath", namespaces=ns)) == 6, "Missing native equations")
+    require(len(refs) == len(REFERENCES) == 36, "Reference count mismatch")
+    require([int(re.match(r"\[(\d+)\]", p)[1]) for p in refs] == list(range(1, 37)), "Bibliography numbering mismatch")
+    require(len([p for p in doc.paragraphs if p.style.name == "Equation"]) == 6, "Missing numbered equations")
+    require(all(p._p.findall(".//" + "{" + ns["m"] + "}oMath") for p in doc.paragraphs if p.style.name == "Equation"), "Equation paragraph lacks native math")
+    require(bool(root.xpath('//w:sectPr/w:cols[@w:num="2"]', namespaces=ns)), "No two-column section")
     require(len(doc.inline_shapes) == 7, "Figure count mismatch")
-    require(len([p for p in doc.paragraphs if p.style.name == "Table Caption"]) == 9, "Table count mismatch")
+    require(len([p for p in doc.paragraphs if p.style.name == "Table Caption"]) == 10, "Table count mismatch")
     require(len([p for p in doc.paragraphs if p.style.name == "Figure Caption"]) == 7, "Caption count mismatch")
     require(len(root.xpath('//w:instrText[contains(., "TOC")]', namespaces=ns)) == 3, "Missing TOC fields")
     require("w:pBdr" not in xml.decode(), "Unexpected decorative title rule")
@@ -51,8 +53,8 @@ def inspect(path):
 
 
 def main():
-    public = ROOT / "deliverables/Proje_Raporu_Tez.docx"
-    private = ROOT / "teslim_ozel/Proje_Raporu_Tez.docx"
+    public = ROOT / "deliverables/Proje_Raporu_Hipotezli_Iki_Sutun.docx"
+    private = ROOT / "teslim_ozel/Proje_Raporu_Hipotezli_Iki_Sutun.docx"
     pd, pt, px = inspect(public)
     sd, st, sx = inspect(private)
     group = json.loads((ROOT / "configs/group_members.local.json").read_text(encoding="utf-8"))
@@ -64,20 +66,22 @@ def main():
     runs, unavailable = load_script("07_build_results.py").collect()
     require(frozen["all_checks_passed"] and not unavailable and len(runs) == 6, "Frozen results failed verification")
 
-    ppdf = PdfReader(ROOT / "qa/tez_final_public/rapor.pdf")
-    spdf = PdfReader(ROOT / "qa/tez_final_submission/rapor.pdf")
+    ppdf = PdfReader(ROOT / "qa/hypotheses_public/rapor.pdf")
+    spdf = PdfReader(ROOT / "qa/hypotheses_submission/rapor.pdf")
     require(len(ppdf.pages) == len(spdf.pages), "Different report page counts")
     page_count = len(ppdf.pages)
-    require(page_count > 25, "Unexpectedly short thesis report")
+    require(page_count > 12, "Unexpectedly short academic report")
     pdf_text = " ".join(p.extract_text() for p in ppdf.pages)
     for phrase in ["Error! Reference source not found", "Error! No table of contents entries found", "Başvuru kaynağı bulunamadı"]:
         require(phrase not in pdf_text, "Broken Word field")
     require("Şekil 7 BERT eğitim" in pdf_text, "Unpopulated figure list")
     require("Tablo 9 Kayıtlı" in pdf_text, "Unpopulated table list")
+    require("Tablo 10 Keşifsel" in pdf_text, "Missing hypothesis table")
+    require(all(h in pdf_text for h in ["H0,1", "H0,2", "H0,3", "H0,4"]), "Missing explicit null hypotheses")
     pixel_checks = []
     for i in range(2, page_count+1):
-        a = ROOT / f"qa/tez_final_public/pages/page-{i}.png"
-        b = ROOT / f"qa/tez_final_submission/pages/page-{i}.png"
+        a = ROOT / f"qa/hypotheses_public/pages/page-{i}.png"
+        b = ROOT / f"qa/hypotheses_submission/pages/page-{i}.png"
         with Image.open(a) as pa, Image.open(b) as pb:
             require(pa.size == pb.size, "Page dimensions differ")
             ah = hashlib.sha256(pa.tobytes()).hexdigest()
@@ -87,13 +91,14 @@ def main():
     counts = [len(p.extract_text().split()) for p in ppdf.pages]
     require(all(n > 35 for n in counts), "Nearly empty report page")
     result = {"verified_at_utc": utc_now(), "all_structural_checks_passed": True,
-              "pages": page_count, "references": len(REFERENCES), "figures": 7, "tables": 9, "native_equations": 6,
+              "pages": page_count, "layout": "two_column_body", "references": len(REFERENCES), "figures": 7, "tables": 10, "native_equations": 6,
+              "explicit_hypotheses": 4, "exploratory_paired_tests": 4,
               "public_sha256": sha256(public), "submission_sha256": sha256(private),
               "student_numbers_publicly_visible": False, "private_cover_has_all_three_student_numbers": True,
               "bodies_text_identical": True, "identical_body_page_pixels": pixel_checks,
               "frozen_data_unchanged": True, "test_runs_verified": 6, "test_predictions_verified": 18000,
-              "pdf_page_word_counts": counts, "visual_review": "Recorded separately in audit/thesis_visual_qa.json"}
-    (ROOT / "audit/thesis_document_validation.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+              "pdf_page_word_counts": counts, "visual_review": "Recorded separately in audit/hypotheses_visual_qa.json"}
+    (ROOT / "audit/hypotheses_document_validation.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({k: result[k] for k in ["all_structural_checks_passed", "pages", "references", "figures", "tables", "native_equations", "student_numbers_publicly_visible", "frozen_data_unchanged"]}))
 
 
